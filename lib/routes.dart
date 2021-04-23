@@ -19,11 +19,14 @@ class Routes {
             : MaterialPageRoute(
                 builder: (BuildContext context) => OnboardingScreen());
       case Routes.authScreen:
+        final bool isSignup = settings.arguments as bool;
         return isIOS
             ? CupertinoPageRoute(
-                builder: (BuildContext context) => AuthScreen())
+                builder: (BuildContext context) =>
+                    AuthScreen(isSignup: isSignup))
             : MaterialPageRoute(
-                builder: (BuildContext context) => AuthScreen());
+                builder: (BuildContext context) =>
+                    AuthScreen(isSignup: isSignup));
       default:
         return isIOS
             ? CupertinoPageRoute(

@@ -10,4 +10,8 @@ class MetaAsset {
   static const String onboarding1 = "assets/images/onboarding/onboarding1.jpeg";
   static const String onboarding2 = "assets/images/onboarding/onboarding2.jpeg";
   static const String onboarding3 = "assets/images/onboarding/onboarding3.jpg";
+
+  static const String money = "assets/images/onboarding/money.png";
+  static const String google = "assets/icons/google.png";
+  static const String facebook = "assets/icons/facebook.png";
 }

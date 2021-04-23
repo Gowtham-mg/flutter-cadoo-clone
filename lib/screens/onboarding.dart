@@ -2,7 +2,9 @@ import 'dart:ui';
 import 'package:cadoo/meta_asset/meta_asset.dart';
 import 'package:cadoo/meta_asset/meta_styles.dart';
 import 'package:cadoo/meta_asset/meta_text.dart';
+import 'package:cadoo/routes.dart';
 import 'package:cadoo/utils/status_bar_color_changer.dart';
+import 'package:cadoo/widgets/app_rounded_button.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -94,24 +96,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           right: _width * 0.05,
                         ),
                         // ignore: deprecated_member_use
-                        child: FlatButton(
-                          child: Text(
-                            MetaText.getStarted,
-                            style: TextStyle(
-                              color: MetaAsset.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w800,
-                              fontFamily: MetaAsset.roboto,
-                            ),
-                          ),
-                          padding: EdgeInsets.symmetric(vertical: 15),
-                          minWidth: _width * 0.9,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                          ),
-                          color: MetaAsset.white,
+                        child: AppRoundedButton(
+                          width: _width,
+                          text: MetaText.getStarted,
                           onPressed: () {
-                            // TODO:
+                            Navigator.pushNamed(context, Routes.authScreen,
+                                arguments: true);
                           },
                         ),
                       ),
@@ -135,7 +125,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               ),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
-                                  // TODO:
+                                  Navigator.pushNamed(
+                                    context,
+                                    Routes.authScreen,
+                                    arguments: false,
+                                  );
                                 },
                             ),
                           ],
@@ -237,7 +231,7 @@ class OnboardingItem3 extends StatelessWidget {
                           padding: EdgeInsets.only(
                               bottom: constraints.maxHeight * 0.1),
                           child: Image.asset(
-                            'assets/images/onboarding/money.png',
+                            MetaAsset.money,
                             height: orientation == Orientation.portrait
                                 ? constraints.maxWidth * 0.3
                                 : constraints.maxHeight * 0.3,

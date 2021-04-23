@@ -11,8 +11,10 @@ class MetaText {
       "Challenge prize pools are distributed amongst winners!";
   static const String getStarted = "Get Started!";
   static const String alreadyHaveAnAccount = "Already have an account? ";
-  static const String login = "Log in";
+  static const String login = "Log In";
+  static const String forgotPassword = "Forgot password?";
 
+  static const String welcomeBack = "Welcome Back!";
   static const String createAnAccount = "Create an Account";
   static const String name = "Name";
   static const String lastName = "Last Name";
@@ -20,5 +22,11 @@ class MetaText {
   static const String password = "Password";
   static const String signUp = "Sign Up";
 
+  static const String google = "Google";
+  static const String facebook = "Facebook";
+  static const String haveAnAccount = "Have an account?";
+  static const String dontHaveAnAccount = "Don't have an account?";
+
   static const String signInWith = "Sign in with";
+  static const String signUpWith = "Sign up with";
 }
