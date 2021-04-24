@@ -55,6 +55,7 @@ class ChallengeDetailWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: width * 0.85,
+      height: 200,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(20)),
         image: DecorationImage(

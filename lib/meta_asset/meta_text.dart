@@ -14,8 +14,19 @@ class MetaText {
   static const String login = "Log In";
   static const String forgotPassword = "Forgot password?";
 
+  static const String myBalance = "My Balance";
+  static const String challengeVouchers = "CHALLENGE VOUCHERS";
   static const String stats = "Stats";
+  static const String withdraw = "Withdraw";
+  static const String addFunds = "Add Funds";
+  static const String history = "History";
+  static const String noRegisteredTickets =
+      "You don't have any registered tickets 🙄";
+  static const String viewVoucherDetails = "View Voucher Details and Rules";
+
   static const String totalChallenges = "Total Challenges";
+  static const String cadooPoints = "Cadoo Points";
+  static const String totalBalance = "Total Balance";
 
   static const String welcomeBack = "Welcome Back!";
   static const String createAnAccount = "Create an Account";

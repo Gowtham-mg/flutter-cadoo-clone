@@ -56,7 +56,11 @@ class DateTimeHelper {
     } else if (timeDifference.inDays < 0) {
       return 'Expired';
     } else {
-      return '${getMonthAsString(date.month - 1)} ${date.day}';
+      return '${getMonthAsString(date.month)} ${date.day}';
     }
+  }
+
+  static String getHistoryDate(DateTime date) {
+    return '${date.day} ${getMonthAsString(date.month)} ${date.year}';
   }
 }
