@@ -3,6 +3,7 @@ import 'package:cadoo/meta_asset/meta_text.dart';
 import 'package:cadoo/utils/validation_helper.dart';
 import 'package:cadoo/widgets/app_rounded_button.dart';
 import 'package:cadoo/widgets/cadoo.dart';
+import 'package:cadoo/widgets/scaffold.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -31,256 +32,250 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: MetaAsset.black,
-        body: SizedBox(
-          width: _width,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Cadoo(),
-              Expanded(
-                child: SingleChildScrollView(
-                  padding: EdgeInsets.only(
-                    bottom: 20,
-                    left: _width * 0.075,
-                    right: _width * 0.075,
-                  ),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 30),
-                        child: Text(
-                          isSignup
-                              ? MetaText.createAnAccount
-                              : MetaText.welcomeBack,
-                          style: TextStyle(
-                            color: MetaAsset.white,
-                            fontSize: 25,
-                            fontWeight: FontWeight.w700,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
+    return CustomScaffold(
+      width: _width,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Cadoo(),
+          Expanded(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.only(
+                bottom: 20,
+                left: _width * 0.075,
+                right: _width * 0.075,
+              ),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 30),
+                    child: Text(
+                      isSignup
+                          ? MetaText.createAnAccount
+                          : MetaText.welcomeBack,
+                      style: TextStyle(
+                        color: MetaAsset.white,
+                        fontSize: 25,
+                        fontWeight: FontWeight.w700,
                       ),
-                      if (isSignup)
-                        LoginTextFormField(
-                          key: ValueKey(MetaText.name),
-                          hintText: MetaText.name,
-                          onSaved: (String val) {
-                            setState(() {
-                              name = val;
-                            });
-                          },
-                          validator: (String val) {
-                            return null;
-                          },
-                        ),
-                      if (isSignup)
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 15.0),
-                          child: LoginTextFormField(
-                            key: ValueKey(MetaText.lastName),
-                            hintText: MetaText.lastName,
-                            onSaved: (String val) {
-                              setState(() {
-                                lastName = val;
-                              });
-                            },
-                            validator: (String val) {
-                              return null;
-                            },
-                          ),
-                        ),
-                      LoginTextFormField(
-                        key: ValueKey(MetaText.email),
-                        hintText: MetaText.email,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  if (isSignup)
+                    LoginTextFormField(
+                      key: ValueKey(MetaText.name),
+                      hintText: MetaText.name,
+                      onSaved: (String val) {
+                        setState(() {
+                          name = val;
+                        });
+                      },
+                      validator: (String val) {
+                        return null;
+                      },
+                    ),
+                  if (isSignup)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 15.0),
+                      child: LoginTextFormField(
+                        key: ValueKey(MetaText.lastName),
+                        hintText: MetaText.lastName,
                         onSaved: (String val) {
                           setState(() {
-                            email = val;
+                            lastName = val;
                           });
                         },
-                        validator: ValidationHelper.validateEmailAddress,
+                        validator: (String val) {
+                          return null;
+                        },
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 15.0),
-                        child: LoginTextFormField(
-                          key: ValueKey(MetaText.password),
-                          hintText: MetaText.password,
-                          onSaved: (String val) {
-                            setState(() {
-                              password = val;
-                            });
-                          },
-                          validator: ValidationHelper.validatePassword,
+                    ),
+                  LoginTextFormField(
+                    key: ValueKey(MetaText.email),
+                    hintText: MetaText.email,
+                    onSaved: (String val) {
+                      setState(() {
+                        email = val;
+                      });
+                    },
+                    validator: ValidationHelper.validateEmailAddress,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 15.0),
+                    child: LoginTextFormField(
+                      key: ValueKey(MetaText.password),
+                      hintText: MetaText.password,
+                      onSaved: (String val) {
+                        setState(() {
+                          password = val;
+                        });
+                      },
+                      validator: ValidationHelper.validatePassword,
+                    ),
+                  ),
+                  AppRoundedButton(
+                    width: _width * 0.9,
+                    text: isSignup ? MetaText.signUp : MetaText.login,
+                    onPressed: () {
+                      // TODO:
+                    },
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: isSignup
+                        ? RichText(
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text:
+                                      'By creating an account you aggree to our ',
+                                  style: TextStyle(
+                                    color: MetaAsset.white,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: 'Terms of Service',
+                                  style: TextStyle(
+                                    color: MetaAsset.white,
+                                    fontSize: 15,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      launch(
+                                          'https://www.cadoo.io/image-licensing');
+                                    },
+                                ),
+                                TextSpan(
+                                  text: ' and ',
+                                  style: TextStyle(
+                                    color: MetaAsset.white,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: 'Privacy Policy',
+                                  style: TextStyle(
+                                    color: MetaAsset.white,
+                                    fontSize: 15,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      launch(
+                                          'https://www.cadoo.io/privacy-polic');
+                                    },
+                                ),
+                              ],
+                            ),
+                            maxLines: 3,
+                          )
+                        : Text(
+                            MetaText.forgotPassword,
+                            style: TextStyle(
+                              color: MetaAsset.white,
+                              fontSize: 17,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Divider(
+                          color: Colors.grey,
+                          thickness: 1,
+                          endIndent: 15,
                         ),
                       ),
-                      AppRoundedButton(
-                        width: _width,
-                        text: isSignup ? MetaText.signUp : MetaText.login,
-                        onPressed: () {
+                      Text(
+                        'or',
+                        style: TextStyle(color: Colors.white70, fontSize: 14),
+                      ),
+                      Expanded(
+                        child: Divider(
+                          color: Colors.grey,
+                          indent: 15,
+                          thickness: 1,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20, bottom: 12.0),
+                    child: Text(
+                      isSignup ? MetaText.signUpWith : MetaText.signInWith,
+                      style: TextStyle(
+                        color: MetaAsset.white,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      Spacer(flex: 2),
+                      AuthSocialButton(
+                        text: MetaText.google,
+                        asset: MetaAsset.google,
+                        onTap: () {
                           // TODO:
                         },
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 20),
-                        child: isSignup
-                            ? RichText(
-                                text: TextSpan(
-                                  children: [
-                                    TextSpan(
-                                      text:
-                                          'By creating an account you aggree to our ',
-                                      style: TextStyle(
-                                        color: MetaAsset.white,
-                                        fontSize: 15,
-                                      ),
-                                    ),
-                                    TextSpan(
-                                      text: 'Terms of Service',
-                                      style: TextStyle(
-                                        color: MetaAsset.white,
-                                        fontSize: 15,
-                                        decoration: TextDecoration.underline,
-                                      ),
-                                      recognizer: TapGestureRecognizer()
-                                        ..onTap = () {
-                                          launch(
-                                              'https://www.cadoo.io/image-licensing');
-                                        },
-                                    ),
-                                    TextSpan(
-                                      text: ' and ',
-                                      style: TextStyle(
-                                        color: MetaAsset.white,
-                                        fontSize: 15,
-                                      ),
-                                    ),
-                                    TextSpan(
-                                      text: 'Privacy Policy',
-                                      style: TextStyle(
-                                        color: MetaAsset.white,
-                                        fontSize: 15,
-                                        decoration: TextDecoration.underline,
-                                      ),
-                                      recognizer: TapGestureRecognizer()
-                                        ..onTap = () {
-                                          launch(
-                                              'https://www.cadoo.io/privacy-polic');
-                                        },
-                                    ),
-                                  ],
-                                ),
-                                maxLines: 3,
-                              )
-                            : Text(
-                                MetaText.forgotPassword,
-                                style: TextStyle(
-                                  color: MetaAsset.white,
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Divider(
-                              color: Colors.grey,
-                              thickness: 1,
-                              endIndent: 15,
-                            ),
-                          ),
-                          Text(
-                            'or',
-                            style:
-                                TextStyle(color: Colors.white70, fontSize: 14),
-                          ),
-                          Expanded(
-                            child: Divider(
-                              color: Colors.grey,
-                              indent: 15,
-                              thickness: 1,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20, bottom: 12.0),
-                        child: Text(
-                          isSignup ? MetaText.signUpWith : MetaText.signInWith,
-                          style: TextStyle(
-                            color: MetaAsset.white,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          Spacer(flex: 2),
-                          AuthSocialButton(
-                            text: MetaText.google,
-                            asset: MetaAsset.google,
-                            onTap: () {
-                              // TODO:
-                            },
-                          ),
-                          Spacer(flex: 1),
-                          AuthSocialButton(
-                            text: MetaText.facebook,
-                            asset: MetaAsset.facebook,
-                            onTap: () {
-                              // TODO:
-                            },
-                          ),
-                          Spacer(flex: 2),
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 15.0, top: 60),
-                        child: Text(
-                          isSignup
-                              ? MetaText.haveAnAccount
-                              : MetaText.dontHaveAnAccount,
-                          style: TextStyle(
-                            color: MetaAsset.white,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                      // ignore: deprecated_member_use
-                      FlatButton(
-                        minWidth: _width * 0.85,
-                        onPressed: () {
-                          setState(() {
-                            isSignup = !isSignup;
-                          });
+                      Spacer(flex: 1),
+                      AuthSocialButton(
+                        text: MetaText.facebook,
+                        asset: MetaAsset.facebook,
+                        onTap: () {
+                          // TODO:
                         },
-                        child: Text(
-                          isSignup ? MetaText.login : MetaText.signUp,
-                          style: TextStyle(
-                            color: MetaAsset.white,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
-                          ),
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                          side: BorderSide(
-                            color: MetaAsset.white,
-                            width: 1.5,
-                          ),
-                        ),
-                        padding: EdgeInsets.symmetric(vertical: 13),
-                        color: Colors.black,
-                      )
+                      ),
+                      Spacer(flex: 2),
                     ],
                   ),
-                ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 15.0, top: 60),
+                    child: Text(
+                      isSignup
+                          ? MetaText.haveAnAccount
+                          : MetaText.dontHaveAnAccount,
+                      style: TextStyle(
+                        color: MetaAsset.white,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  // ignore: deprecated_member_use
+                  FlatButton(
+                    minWidth: _width * 0.85,
+                    onPressed: () {
+                      setState(() {
+                        isSignup = !isSignup;
+                      });
+                    },
+                    child: Text(
+                      isSignup ? MetaText.login : MetaText.signUp,
+                      style: TextStyle(
+                        color: MetaAsset.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                      ),
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
+                      side: BorderSide(
+                        color: MetaAsset.white,
+                        width: 1.5,
+                      ),
+                    ),
+                    padding: EdgeInsets.symmetric(vertical: 13),
+                    color: Colors.black,
+                  )
+                ],
               ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

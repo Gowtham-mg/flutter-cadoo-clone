@@ -18,6 +18,10 @@ class DateTimeHelper {
     return months[month - 1].substring(0, 3);
   }
 
+  static String getFullMonthAsString(int month) {
+    return months[month - 1];
+  }
+
   static String greeting(DateTime date) {
     if (date.hour < 3) {
       return 'Good noon';
@@ -62,5 +66,27 @@ class DateTimeHelper {
 
   static String getHistoryDate(DateTime date) {
     return '${date.day} ${getMonthAsString(date.month)} ${date.year}';
+  }
+
+  static String currentTime(DateTime date) {
+    int hour = date.hour;
+    bool isAm;
+    if (hour == 0) {
+      hour = 12;
+      isAm = true;
+    } else if (hour > 12) {
+      hour = 12 - hour;
+      isAm = false;
+    } else if (hour == 12) {
+      hour = 12;
+      isAm = false;
+    } else {
+      isAm = true;
+    }
+    return '$hour:${date.minute}${isAm ? 'am' : 'pm'}';
+  }
+
+  static String getContactDate(DateTime date) {
+    return '${getFullMonthAsString(date.month)} ${date.day}';
   }
 }

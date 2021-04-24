@@ -22,4 +22,10 @@ class MetaStyles {
     fontWeight: FontWeight.w700,
     fontFamily: MetaAsset.comfortaa,
   );
+
+  static const TextStyle contactDialogStyle = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+    color: MetaAsset.black,
+  );
 }

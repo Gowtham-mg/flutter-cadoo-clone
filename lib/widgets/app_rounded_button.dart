@@ -7,11 +7,15 @@ class AppRoundedButton extends StatelessWidget {
     @required this.width,
     @required this.text,
     @required this.onPressed,
+    this.buttonColor = MetaAsset.white,
+    this.style,
   }) : super(key: key);
 
   final double width;
   final String text;
   final Function onPressed;
+  final Color buttonColor;
+  final TextStyle style;
 
   @override
   Widget build(BuildContext context) {
@@ -19,19 +23,20 @@ class AppRoundedButton extends StatelessWidget {
     return FlatButton(
       child: Text(
         text,
-        style: TextStyle(
-          color: MetaAsset.black,
-          fontSize: 17,
-          fontWeight: FontWeight.w800,
-          fontFamily: MetaAsset.roboto,
-        ),
+        style: style ??
+            TextStyle(
+              color: MetaAsset.black,
+              fontSize: 17,
+              fontWeight: FontWeight.w800,
+              fontFamily: MetaAsset.roboto,
+            ),
       ),
       padding: EdgeInsets.symmetric(vertical: 15),
-      minWidth: width * 0.9,
+      minWidth: width,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(8)),
       ),
-      color: MetaAsset.white,
+      color: buttonColor,
       onPressed: onPressed,
     );
   }

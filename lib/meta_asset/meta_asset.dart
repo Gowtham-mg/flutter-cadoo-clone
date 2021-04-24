@@ -15,6 +15,7 @@ class MetaAsset {
   static const String money = "assets/images/onboarding/money.png";
   static const String google = "assets/icons/google.png";
   static const String facebook = "assets/icons/facebook.png";
+  static const String intercomm = "assets/icons/intercomm.png";
 
   static const String menu = "assets/icons/menu.png";
 }

@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       onGenerateRoute: Routes.generateRoute,
-      initialRoute: Routes.onboarding,
+      initialRoute: Routes.voucherDetails,
     );
   }
 }
