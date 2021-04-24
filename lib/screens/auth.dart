@@ -1,8 +1,8 @@
 import 'package:cadoo/meta_asset/meta_asset.dart';
-import 'package:cadoo/meta_asset/meta_styles.dart';
 import 'package:cadoo/meta_asset/meta_text.dart';
 import 'package:cadoo/utils/validation_helper.dart';
 import 'package:cadoo/widgets/app_rounded_button.dart';
+import 'package:cadoo/widgets/cadoo.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -39,10 +39,7 @@ class _AuthScreenState extends State<AuthScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                MetaText.cadoo,
-                style: MetaStyles.onboardingAppNameStyle,
-              ),
+              Cadoo(),
               Expanded(
                 child: SingleChildScrollView(
                   padding: EdgeInsets.only(

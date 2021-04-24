@@ -3,6 +3,7 @@ import 'dart:ui';
 class MetaAsset {
   static const Color black = Color(0xFF000000);
   static const Color white = Color(0xFFffffff);
+  static const Color accentGreen = Color(0xFFd5f500);
 
   static const String comfortaa = "Comfortaa";
   static const String roboto = "Roboto";
@@ -14,4 +15,6 @@ class MetaAsset {
   static const String money = "assets/images/onboarding/money.png";
   static const String google = "assets/icons/google.png";
   static const String facebook = "assets/icons/facebook.png";
+
+  static const String menu = "assets/icons/menu.png";
 }

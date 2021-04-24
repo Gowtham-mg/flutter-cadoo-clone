@@ -14,6 +14,9 @@ class MetaText {
   static const String login = "Log In";
   static const String forgotPassword = "Forgot password?";
 
+  static const String stats = "Stats";
+  static const String totalChallenges = "Total Challenges";
+
   static const String welcomeBack = "Welcome Back!";
   static const String createAnAccount = "Create an Account";
   static const String name = "Name";
@@ -21,6 +24,11 @@ class MetaText {
   static const String email = "Email";
   static const String password = "Password";
   static const String signUp = "Sign Up";
+
+  static const String newChallenges = "New Challenges";
+  static const String myChallenges = "My Challenges";
+  static const String viewAll = "View All";
+  static const String joined = "JOINED";
 
   static const String google = "Google";
   static const String facebook = "Facebook";
