@@ -14,6 +14,32 @@ class MetaText {
   static const String login = "Log In";
   static const String forgotPassword = "Forgot password?";
 
+  static const String editProfile = "Edit Profile";
+  static const String myProfile = "My Profile";
+  static const String joinedChallenges = "JOINED CHALLENGES";
+  static const String balance = "BALANCE";
+  static const String notVisibleToOthers = "(NOT VISIBLE TO OTHERS)";
+  static const String basicInfo = "Basic Info";
+  static const String address = "Address";
+  static const String mobilePhone = "Mobile Phone";
+  static const String street = "Street";
+  static const String zipCode = "Zip Code";
+  static const String country = "Country";
+  static const String state = "State";
+  static const String city = "City";
+  static const String firstName = "First Name";
+  static const String followers = "Followers";
+  static const String noFollowersYet = "You don't have any followers yet 😔";
+  static const String funWithFriends = "It's more fun with friends 🔎";
+  static const String findFriends = "Find Friends";
+  static const String notFollowingAnyoneYet =
+      "You are not following anyone yet 🤔";
+  static const String whoImFollowing = "Who I'm Following";
+  static const String searchAccountOnCadoo = "Search Accounts on Cadoo";
+
+  // static const String stats = "Stats";
+
+  static const String myStats = "MY STATS";
   static const String myBalance = "My Balance";
   static const String challengeVouchers = "CHALLENGE VOUCHERS";
   static const String stats = "Stats";
