@@ -28,4 +28,16 @@ class MetaStyles {
     fontWeight: FontWeight.w500,
     color: MetaAsset.black,
   );
+
+  static const TextStyle categoryStyle = TextStyle(
+    color: MetaAsset.white,
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle intercommStyle = TextStyle(
+    color: MetaAsset.black,
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+  );
 }

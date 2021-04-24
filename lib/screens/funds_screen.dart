@@ -1,4 +1,5 @@
 import 'package:cadoo/meta_asset/meta_asset.dart';
+import 'package:cadoo/meta_asset/meta_styles.dart';
 import 'package:cadoo/meta_asset/meta_text.dart';
 import 'package:cadoo/models/transaction.dart';
 import 'package:cadoo/routes.dart';
@@ -6,7 +7,7 @@ import 'package:cadoo/utils/date_time_helper.dart';
 import 'package:cadoo/widgets/scaffold.dart';
 import 'package:flutter/material.dart';
 
-class FundsScreen extends StatelessWidget {
+class MyBalanceScreen extends StatelessWidget {
   final double balance = 0;
   final List<int> smartOptions = [5, 15, 25, 50, 100];
   final int challengeVouchersCount = 0;
@@ -31,8 +32,8 @@ class FundsScreen extends StatelessWidget {
               MetaText.myBalance,
               style: TextStyle(
                 color: MetaAsset.white,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
+                fontSize: 19,
+                fontWeight: FontWeight.w400,
               ),
             ),
           ),
@@ -50,25 +51,37 @@ class FundsScreen extends StatelessWidget {
                     '\$${balance.toStringAsFixed(2)}',
                     style: TextStyle(
                       color: MetaAsset.white,
-                      fontSize: 26,
+                      fontSize: 30,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20),
+                    padding: EdgeInsets.only(top: 30, bottom: 50),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         ...smartOptions
                             .map((e) => InkWell(
-                                  child: Text('\$$e'),
+                                  child: Text(
+                                    '\$$e',
+                                    style: TextStyle(
+                                      color: MetaAsset.accentGreen,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
                                   onTap: () {
                                     // TODO: Add cash
                                   },
                                 ))
                             .toList(),
                         InkWell(
-                          child: Text('Other'),
+                          child: Text(
+                            'Other',
+                            style: TextStyle(
+                              color: MetaAsset.white,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
                           onTap: () {
                             // TODO: Add cash
                           },
@@ -94,7 +107,7 @@ class FundsScreen extends StatelessWidget {
                           '- ${MetaText.withdraw}',
                           style: TextStyle(
                             color: MetaAsset.white,
-                            fontSize: 16,
+                            fontSize: 18,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -110,18 +123,25 @@ class FundsScreen extends StatelessWidget {
                           '+ ${MetaText.addFunds}',
                           style: TextStyle(
                             color: MetaAsset.black,
-                            fontSize: 16,
+                            fontSize: 18,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
                       ),
                     ],
                   ),
-                  Text(
-                    MetaText.challengeVouchers + '($challengeVouchersCount)',
-                    style: TextStyle(
-                      color: MetaAsset.white,
-                      fontSize: 15,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0, bottom: 40),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        MetaText.challengeVouchers +
+                            '($challengeVouchersCount)',
+                        style: TextStyle(
+                          color: MetaAsset.white,
+                          fontSize: 15,
+                        ),
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -131,7 +151,7 @@ class FundsScreen extends StatelessWidget {
                       MetaText.noRegisteredTickets,
                       style: TextStyle(
                         color: MetaAsset.accentGreen,
-                        fontSize: 13,
+                        fontSize: 14,
                         fontWeight: FontWeight.w500,
                       ),
                       textAlign: TextAlign.center,
@@ -153,13 +173,13 @@ class FundsScreen extends StatelessWidget {
                           Text(
                             MetaText.viewVoucherDetails,
                             style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
+                              color: Colors.white60,
+                              fontSize: 19,
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                           Spacer(),
-                          Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                          Icon(Icons.arrow_forward_ios, color: Colors.white60),
                         ],
                       ),
                       onTap: () {
@@ -173,18 +193,20 @@ class FundsScreen extends StatelessWidget {
                     padding: EdgeInsets.symmetric(vertical: 6),
                     child: Row(
                       children: [
-                        Text(MetaText.history),
+                        Text(MetaText.history, style: MetaStyles.categoryStyle),
                         Spacer(),
-                        Text(MetaText.viewAll),
+                        Text(MetaText.viewAll, style: MetaStyles.categoryStyle),
                         Icon(
-                          Icons.arrow_forward,
-                          color: MetaAsset.accentGreen,
+                          Icons.arrow_forward_ios,
+                          color: MetaAsset.white,
                         )
                       ],
                     ),
                   ),
                   ListView.builder(
                     itemCount: 5,
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
                     itemBuilder: (BuildContext context, int index) {
                       return ListTile(
                         leading: Text(
@@ -196,11 +218,17 @@ class FundsScreen extends StatelessWidget {
                         ),
                         title: Text(
                           transaction.title,
-                          style: TextStyle(color: MetaAsset.white),
+                          style: TextStyle(
+                            color: MetaAsset.white,
+                            fontSize: 15,
+                          ),
                         ),
                         subtitle: Text(
                           DateTimeHelper.getHistoryDate(transaction.date),
-                          style: TextStyle(color: Colors.grey.shade500),
+                          style: TextStyle(
+                            color: Colors.grey.shade500,
+                            fontSize: 13,
+                          ),
                         ),
                         trailing: Text(
                           '${transaction.currency}${transaction.amount.toStringAsFixed(2)}',

@@ -65,7 +65,7 @@ class DateTimeHelper {
   }
 
   static String getHistoryDate(DateTime date) {
-    return '${date.day} ${getMonthAsString(date.month)} ${date.year}';
+    return '${getMonthAsString(date.month)} ${date.day}, ${date.year}';
   }
 
   static String currentTime(DateTime date) {

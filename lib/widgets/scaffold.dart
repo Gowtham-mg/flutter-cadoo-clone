@@ -1,4 +1,5 @@
 import 'package:cadoo/meta_asset/meta_asset.dart';
+import 'package:cadoo/utils/status_bar_color_changer.dart';
 import 'package:flutter/material.dart';
 
 class CustomScaffold extends StatelessWidget {
@@ -14,13 +15,18 @@ class CustomScaffold extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: MetaAsset.black,
-        appBar: appbar,
-        body: SizedBox(
-          child: child,
-          width: width,
+    return StatusBarColorChanger(
+      androidIconBrightness: Brightness.dark,
+      iosStatusBarBrightness: Brightness.dark,
+      androidStatusBarColor: MetaAsset.black,
+      child: SafeArea(
+        child: Scaffold(
+          backgroundColor: MetaAsset.black,
+          appBar: appbar,
+          body: SizedBox(
+            child: child,
+            width: width,
+          ),
         ),
       ),
     );

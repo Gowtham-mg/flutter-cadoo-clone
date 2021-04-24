@@ -84,7 +84,9 @@ class VoucherDetails extends StatelessWidget {
                     padding: EdgeInsets.symmetric(vertical: 8),
                     // ignore: deprecated_member_use
                     child: FlatButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        // TODO:
+                      },
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                         side: BorderSide(
@@ -121,7 +123,14 @@ class VoucherDetails extends StatelessWidget {
                   decoration: TextDecoration.underline,
                 ),
               ),
-              onTap: () {},
+              onTap: () {
+                // showDialog(
+                //   context: context,
+                //   builder: (BuildContext context) {
+                //     return ContactDialog();
+                //   },
+                // );
+              },
             ),
           ],
         ),

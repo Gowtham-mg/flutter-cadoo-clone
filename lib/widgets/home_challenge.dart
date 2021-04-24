@@ -1,4 +1,5 @@
 import 'package:cadoo/meta_asset/meta_asset.dart';
+import 'package:cadoo/meta_asset/meta_styles.dart';
 import 'package:cadoo/meta_asset/meta_text.dart';
 import 'package:cadoo/models/challenge_detail.dart';
 import 'package:cadoo/utils/date_time_helper.dart';
@@ -19,20 +20,26 @@ class ChallengeStatBadge extends StatelessWidget {
     return Row(
       children: [
         CircleAvatar(
-          radius: 8,
+          radius: 14,
           backgroundColor: MetaAsset.black,
           child: Icon(
             icon,
             color: MetaAsset.accentGreen,
-            size: 6,
+            size: 15,
           ),
         ),
-        Text(
-          '  $stat',
-          style: TextStyle(
-            color: MetaAsset.white,
-            fontSize: 15,
-            fontWeight: FontWeight.w500,
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 8.0),
+            child: Text(
+              stat,
+              style: TextStyle(
+                color: MetaAsset.white,
+                fontSize: 13,
+                fontWeight: FontWeight.w500,
+              ),
+              maxLines: 2,
+            ),
           ),
         ),
       ],
@@ -55,31 +62,33 @@ class ChallengeDetailWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: width * 0.85,
-      height: 200,
+      height: 170,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(20)),
         image: DecorationImage(
-          image: NetworkImage(
-            image,
-          ),
+          image: NetworkImage(image),
           fit: BoxFit.cover,
         ),
       ),
       margin: EdgeInsets.only(right: width * 0.05),
+      padding: EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 8),
       child: Row(
         children: [
           Expanded(
-            flex: 8,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  challengeDetail.title,
-                  style: TextStyle(
-                    color: MetaAsset.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.w500,
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0, bottom: 5),
+                  child: Text(
+                    challengeDetail.title,
+                    style: TextStyle(
+                      color: MetaAsset.white,
+                      fontSize: 25,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    maxLines: 1,
                   ),
-                  maxLines: 1,
                 ),
                 Text(
                   challengeDetail.description,
@@ -96,16 +105,17 @@ class ChallengeDetailWidget extends StatelessWidget {
                 Row(
                   children: [
                     ClipRRect(
-                      child: Image.asset(
+                      child: Image.network(
                         challengeDetail.icon,
                         fit: BoxFit.cover,
-                        height: 40,
-                        width: 40,
+                        height: 30,
+                        width: 30,
                       ),
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(15),
                     ),
-                    if (challengeDetail.isJoined)
-                      Padding(
+                    Visibility(
+                      visible: challengeDetail.isJoined,
+                      child: Padding(
                         padding: const EdgeInsets.only(left: 8.0),
                         child: Text(
                           MetaText.joined,
@@ -116,14 +126,17 @@ class ChallengeDetailWidget extends StatelessWidget {
                           ),
                         ),
                       ),
+                    ),
                   ],
                 ),
               ],
             ),
           ),
-          Expanded(
-            flex: 2,
+          SizedBox(
+            width: 75,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ChallengeStatBadge(
                   icon: Icons.people,
@@ -156,7 +169,7 @@ class ChallengeDetailWidget extends StatelessWidget {
 }
 
 class CategoryViewAll extends StatelessWidget {
-  const CategoryViewAll({
+  CategoryViewAll({
     Key key,
     @required this.category,
     @required this.onTap,
@@ -169,14 +182,14 @@ class CategoryViewAll extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(category),
+        Text(category, style: MetaStyles.categoryStyle),
         Spacer(),
         InkWell(
           onTap: onTap,
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(MetaText.viewAll),
+              Text(MetaText.viewAll, style: MetaStyles.categoryStyle),
               Icon(
                 Icons.arrow_forward,
                 color: MetaAsset.accentGreen,

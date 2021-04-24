@@ -5,13 +5,14 @@ import 'package:flutter/material.dart';
 class Cadoo extends StatelessWidget {
   const Cadoo({
     Key key,
+    this.style,
   }) : super(key: key);
-
+  final TextStyle style;
   @override
   Widget build(BuildContext context) {
     return Text(
       MetaText.cadoo,
-      style: MetaStyles.onboardingAppNameStyle,
+      style: style ?? MetaStyles.onboardingAppNameStyle,
     );
   }
 }

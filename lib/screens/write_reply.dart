@@ -13,11 +13,7 @@ class WriteReply extends StatelessWidget {
     fontSize: 18,
     fontWeight: FontWeight.w500,
   );
-  final TextStyle descriptionStyle = TextStyle(
-    color: MetaAsset.black,
-    fontSize: 18,
-    fontWeight: FontWeight.w500,
-  );
+
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
@@ -222,7 +218,7 @@ class WriteReply extends StatelessWidget {
                       Image.asset(MetaAsset.intercomm, height: 20, width: 20),
                       Text(
                         'We run on Intercom',
-                        style: descriptionStyle,
+                        style: MetaStyles.intercommStyle,
                       )
                     ],
                   ),

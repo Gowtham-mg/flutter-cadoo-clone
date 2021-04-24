@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cadoo/screens/auth.dart';
+import 'package:cadoo/screens/funds_screen.dart';
 import 'package:cadoo/screens/home.dart';
 import 'package:cadoo/screens/onboarding.dart';
 import 'package:cadoo/screens/voucher_details.dart';
@@ -14,6 +15,7 @@ class Routes {
   static const String home = "/home";
   static const String voucherDetails = "/voucher_details";
   static const String writeReply = "/write_reply";
+  static const String myBalance = "/my_balance";
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     final bool isIOS = Platform.isIOS;
@@ -45,6 +47,12 @@ class Routes {
                 builder: (BuildContext context) => VoucherDetails())
             : MaterialPageRoute(
                 builder: (BuildContext context) => VoucherDetails());
+      case Routes.myBalance:
+        return isIOS
+            ? CupertinoPageRoute(
+                builder: (BuildContext context) => MyBalanceScreen())
+            : MaterialPageRoute(
+                builder: (BuildContext context) => MyBalanceScreen());
       case Routes.writeReply:
         return isIOS
             ? CupertinoPageRoute(
