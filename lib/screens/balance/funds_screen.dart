@@ -5,7 +5,6 @@ import 'package:cadoo/models/transaction.dart';
 import 'package:cadoo/routes.dart';
 import 'package:cadoo/utils/date_time_helper.dart';
 import 'package:cadoo/widgets/edit_profile_text_form_field.dart';
-import 'package:cadoo/widgets/scaffold.dart';
 import 'package:flutter/material.dart';
 
 class MyBalanceScreen extends StatefulWidget {
@@ -36,13 +35,12 @@ class _MyBalanceScreenState extends State<MyBalanceScreen> {
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
-    return CustomScaffold(
-      width: _width,
+    return Expanded(
       child: Column(
         children: [
-          // margin: EdgeInsets.symmetric(horizontal: _width * 0.05),
           Padding(
-            padding: EdgeInsets.only(top: 20, bottom: 5),
+            padding: EdgeInsets.only(
+                top: 10 + MediaQuery.of(context).viewPadding.top, bottom: 10),
             child: Text(
               MetaText.myBalance,
               style: TextStyle(
@@ -296,6 +294,7 @@ class _MyBalanceScreenState extends State<MyBalanceScreen> {
                       Navigator.pushNamed(context, Routes.balanceHistory);
                     },
                     padding: EdgeInsets.symmetric(vertical: 6),
+                    height: 0,
                     child: Row(
                       children: [
                         Text(MetaText.history, style: MetaStyles.categoryStyle),
@@ -313,6 +312,7 @@ class _MyBalanceScreenState extends State<MyBalanceScreen> {
                     itemCount: 5,
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
+                    padding: EdgeInsets.zero,
                     itemBuilder: (BuildContext context, int index) {
                       return ListTile(
                         leading: Text(

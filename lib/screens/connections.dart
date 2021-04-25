@@ -50,35 +50,51 @@ class ConnectionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
-    return CustomScaffold(
-      width: _width,
-      appbar: AppBar(
-        backgroundColor: MetaAsset.black,
-        centerTitle: true,
-        leading: Offstage(),
-        title: Text(
-          MetaText.connections,
-          style: TextStyle(color: MetaAsset.white),
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.contact_support,
-              color: MetaAsset.white,
-            ),
-            onPressed: () {
-              Navigator.pushNamed(context, Routes.connectionSupport);
-            },
-          )
-        ],
-      ),
+    return SafeArea(
       child: SingleChildScrollView(
-        padding: EdgeInsets.only(top: 40, bottom: 20),
+        padding: EdgeInsets.only(bottom: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Visibility(
+                  maintainSize: true,
+                  visible: false,
+                  maintainAnimation: true,
+                  maintainState: true,
+                  child: IconButton(
+                    icon: Icon(Icons.arrow_back_ios),
+                    onPressed: () {},
+                  ),
+                ),
+                Text(
+                  MetaText.connections,
+                  style: TextStyle(
+                    color: MetaAsset.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                IconButton(
+                  icon: Icon(
+                    Icons.contact_support,
+                    color: MetaAsset.white,
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, Routes.connectionSupport);
+                  },
+                )
+              ],
+            ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: _width * 0.05),
+              padding: EdgeInsets.only(
+                left: _width * 0.05,
+                top: 40,
+                right: _width * 0.05,
+                bottom: 6,
+              ),
               child: accentTitle(MetaText.connected),
             ),
             Container(

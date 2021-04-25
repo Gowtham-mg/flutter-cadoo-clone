@@ -45,167 +45,159 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
-    return StatusBarColorChanger(
-      androidIconBrightness: Brightness.dark,
-      iosStatusBarBrightness: Brightness.dark,
-      child: Scaffold(
-        backgroundColor: MetaAsset.black,
-        body: SizedBox(
-          width: _width,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  height: 170 + MediaQuery.of(context).viewPadding.top,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage(
-                        'https://images.unsplash.com/photo-1477332552946-cfb384aeaf1c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDl8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+    return Expanded(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 170 + MediaQuery.of(context).viewPadding.top,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(
+                    'https://images.unsplash.com/photo-1477332552946-cfb384aeaf1c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDl8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+                  ),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              padding: EdgeInsets.only(
+                top: MediaQuery.of(context).viewPadding.top,
+                bottom: 10,
+              ),
+              margin: EdgeInsets.only(bottom: 15),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      IconButton(
+                        icon: Image.asset(
+                          MetaAsset.menu,
+                          color: MetaAsset.white,
+                          height: 20,
+                          width: 20,
+                          fit: BoxFit.cover,
+                        ),
+                        onPressed: () {
+                          // TODO: Open Drawer
+                        },
                       ),
-                      fit: BoxFit.cover,
+                      Spacer(),
+                      Cadoo(
+                        style: TextStyle(
+                          color: MetaAsset.white,
+                          fontSize: 30,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: MetaAsset.comfortaa,
+                        ),
+                      ),
+                      Spacer(),
+                      IconButton(
+                        icon: Icon(
+                          Icons.notifications,
+                          color: MetaAsset.accentGreen,
+                          size: 16,
+                        ),
+                        onPressed: () {
+                          // TODO: Show notifications
+                        },
+                      ),
+                    ],
+                  ),
+                  Spacer(),
+                  Text(
+                    '${DateTimeHelper.greeting(currentTime)}, $name!',
+                    style: TextStyle(
+                      color: MetaAsset.white,
+                      fontSize: 23,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
-                  padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).viewPadding.top,
-                    bottom: 10,
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                left: _width * 0.04,
+                right: _width * 0.04,
+                bottom: MediaQuery.of(context).viewPadding.bottom,
+              ),
+              child: Column(
+                children: [
+                  CategoryViewAll(
+                    category: MetaText.newChallenges,
+                    onTap: () {
+                      // TODO: View all
+                    },
                   ),
-                  margin: EdgeInsets.only(bottom: 15),
-                  child: Column(
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 13.0),
+                    child: SizedBox(
+                      height: 170,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 20,
+                        itemBuilder: (BuildContext context, int index) {
+                          return ChallengeDetailWidget(
+                            challengeDetail: challengeDetail,
+                            width: _width,
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                  categoryDivider,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5.0, bottom: 12.5),
+                    child: CategoryViewAll(
+                      category: MetaText.myChallenges,
+                      onTap: () {
+                        // TODO: View all
+                      },
+                    ),
+                  ),
+                  ChallengeDetailWidget(
+                    challengeDetail: challengeDetail,
+                    width: _width,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 12.0),
+                    child: categoryDivider,
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      MetaText.stats,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                      ),
+                    ),
+                  ),
+                  statDivider,
+                  Row(
                     children: [
-                      Row(
-                        children: [
-                          IconButton(
-                            icon: Image.asset(
-                              MetaAsset.menu,
-                              color: MetaAsset.white,
-                              height: 20,
-                              width: 20,
-                              fit: BoxFit.cover,
-                            ),
-                            onPressed: () {
-                              // TODO: Open Drawer
-                            },
-                          ),
-                          Spacer(),
-                          Cadoo(
-                            style: TextStyle(
-                              color: MetaAsset.white,
-                              fontSize: 30,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: MetaAsset.comfortaa,
-                            ),
-                          ),
-                          Spacer(),
-                          IconButton(
-                            icon: Icon(
-                              Icons.notifications,
-                              color: MetaAsset.accentGreen,
-                              size: 16,
-                            ),
-                            onPressed: () {
-                              // TODO: Show notifications
-                            },
-                          ),
-                        ],
+                      Text(
+                        MetaText.totalChallenges,
+                        style: TextStyle(
+                          color: Colors.white70,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                       Spacer(),
                       Text(
-                        '${DateTimeHelper.greeting(currentTime)}, $name!',
+                        totalChallengeCount.toString(),
                         style: TextStyle(
-                          color: MetaAsset.white,
-                          fontSize: 23,
-                          fontWeight: FontWeight.w700,
+                          color: MetaAsset.accentGreen,
+                          fontSize: 15,
                         ),
-                      ),
+                      )
                     ],
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    left: _width * 0.04,
-                    right: _width * 0.04,
-                    bottom: MediaQuery.of(context).viewPadding.bottom,
-                  ),
-                  child: Column(
-                    children: [
-                      CategoryViewAll(
-                        category: MetaText.newChallenges,
-                        onTap: () {
-                          // TODO: View all
-                        },
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 13.0),
-                        child: SizedBox(
-                          height: 170,
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: 20,
-                            itemBuilder: (BuildContext context, int index) {
-                              return ChallengeDetailWidget(
-                                challengeDetail: challengeDetail,
-                                width: _width,
-                              );
-                            },
-                          ),
-                        ),
-                      ),
-                      categoryDivider,
-                      Padding(
-                        padding: const EdgeInsets.only(top: 5.0, bottom: 12.5),
-                        child: CategoryViewAll(
-                          category: MetaText.myChallenges,
-                          onTap: () {
-                            // TODO: View all
-                          },
-                        ),
-                      ),
-                      ChallengeDetailWidget(
-                        challengeDetail: challengeDetail,
-                        width: _width,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 12.0),
-                        child: categoryDivider,
-                      ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          MetaText.stats,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                          ),
-                        ),
-                      ),
-                      statDivider,
-                      Row(
-                        children: [
-                          Text(
-                            MetaText.totalChallenges,
-                            style: TextStyle(
-                              color: Colors.white70,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          Spacer(),
-                          Text(
-                            totalChallengeCount.toString(),
-                            style: TextStyle(
-                              color: MetaAsset.accentGreen,
-                              fontSize: 15,
-                            ),
-                          )
-                        ],
-                      ),
-                      statDivider,
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
+                  statDivider,
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );

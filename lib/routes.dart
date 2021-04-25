@@ -9,6 +9,7 @@ import 'package:cadoo/screens/connections.dart';
 import 'package:cadoo/screens/contact_support.dart';
 import 'package:cadoo/screens/balance/funds_screen.dart';
 import 'package:cadoo/screens/home.dart';
+import 'package:cadoo/screens/home_scaffold.dart';
 import 'package:cadoo/screens/official_challenge_rules.dart';
 import 'package:cadoo/screens/onboarding.dart';
 import 'package:cadoo/screens/profile/edit_profile.dart';
@@ -66,9 +67,9 @@ class Routes {
       case Routes.home:
         return isIOS
             ? CupertinoPageRoute(
-                builder: (BuildContext context) => HomeScreen())
+                builder: (BuildContext context) => HomeScaffold())
             : MaterialPageRoute(
-                builder: (BuildContext context) => HomeScreen());
+                builder: (BuildContext context) => HomeScaffold());
       case Routes.voucherDetails:
         return isIOS
             ? CupertinoPageRoute(

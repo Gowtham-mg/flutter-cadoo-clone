@@ -1,5 +1,6 @@
 import 'package:cadoo/meta_asset/meta_asset.dart';
 import 'package:cadoo/meta_asset/meta_text.dart';
+import 'package:cadoo/routes.dart';
 import 'package:cadoo/utils/validation_helper.dart';
 import 'package:cadoo/widgets/app_rounded_button.dart';
 import 'package:cadoo/widgets/cadoo.dart';
@@ -118,6 +119,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     text: isSignup ? MetaText.signUp : MetaText.login,
                     onPressed: () {
                       // TODO:
+                      Navigator.pushNamed(context, Routes.home);
                     },
                   ),
                   Padding(
@@ -220,6 +222,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         asset: MetaAsset.google,
                         onTap: () {
                           // TODO:
+                          Navigator.pushNamed(context, Routes.home);
                         },
                       ),
                       Spacer(flex: 1),
@@ -228,6 +231,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         asset: MetaAsset.facebook,
                         onTap: () {
                           // TODO:
+                          Navigator.pushNamed(context, Routes.home);
                         },
                       ),
                       Spacer(flex: 2),

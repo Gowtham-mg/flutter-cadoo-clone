@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       ),
       // home: ChallengeInfo(),
       onGenerateRoute: Routes.generateRoute,
-      initialRoute: Routes.profile,
+      initialRoute: Routes.onboarding,
     );
   }
 }

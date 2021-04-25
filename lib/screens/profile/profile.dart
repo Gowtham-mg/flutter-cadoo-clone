@@ -45,219 +45,233 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
-    return CustomScaffold(
-      width: _width,
-      appbar: AppBar(
-        backgroundColor: MetaAsset.black,
-        title: Text(
-          MetaText.myProfile,
-          style: TextStyle(color: MetaAsset.white, fontSize: 20),
-        ),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.settings,
-              color: MetaAsset.white,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(
+              top: MediaQuery.of(context).viewPadding.top + 10,
             ),
-            onPressed: () {
-              Navigator.pushNamed(context, Routes.changeProfile);
-            },
-          )
-        ],
-      ),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            ProfileHeader(
-              width: _width,
-              name: name,
-              followers: followers,
-              following: following,
-            ),
-            // TabBar(
-            //   onTap: (int index) {},
-            //   indicator: BoxDecoration(
-            //     border: Border(
-            //       top: BorderSide(
-            //         color: Colors.grey,
-            //         width: 0.5,
-            //       ),
-            //       bottom: BorderSide(
-            //         color: Colors.grey,
-            //         width: 0.5,
-            //       ),
-            //     ),
-            //   ),
-            //   tabs: [
-            //   ],
-            // ),
-            Row(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ToggleProfileButton(
-                  text: MetaText.myChallenges.toUpperCase(),
-                  isSelected:
-                      selectedMode == MetaText.myChallenges.toUpperCase(),
-                  onPressed: () {
-                    setState(() {
-                      selectedMode = MetaText.myChallenges.toUpperCase();
-                    });
-                  },
+                Visibility(
+                  maintainSize: true,
+                  visible: false,
+                  maintainAnimation: true,
+                  maintainState: true,
+                  child: IconButton(
+                    icon: Icon(Icons.arrow_back_ios),
+                    onPressed: () {},
+                  ),
                 ),
-                ToggleProfileButton(
-                  text: MetaText.myStats,
-                  isSelected: selectedMode == MetaText.myStats,
-                  onPressed: () {
-                    setState(() {
-                      selectedMode = MetaText.myStats;
-                    });
-                  },
+                Text(
+                  MetaText.myProfile,
+                  style: TextStyle(
+                    color: MetaAsset.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
+                IconButton(
+                  icon: Icon(
+                    Icons.settings,
+                    color: MetaAsset.white,
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, Routes.changeProfile);
+                  },
+                )
               ],
             ),
-            Visibility(
-              visible: selectedMode == MetaText.myChallenges.toUpperCase(),
+          ),
+          ProfileHeader(
+            width: _width,
+            name: name,
+            followers: followers,
+            following: following,
+          ),
+          // TabBar(
+          //   onTap: (int index) {},
+          //   indicator: BoxDecoration(
+          //     border: Border(
+          //       top: BorderSide(
+          //         color: Colors.grey,
+          //         width: 0.5,
+          //       ),
+          //       bottom: BorderSide(
+          //         color: Colors.grey,
+          //         width: 0.5,
+          //       ),
+          //     ),
+          //   ),
+          //   tabs: [
+          //   ],
+          // ),
+          Row(
+            children: [
+              ToggleProfileButton(
+                text: MetaText.myChallenges.toUpperCase(),
+                isSelected: selectedMode == MetaText.myChallenges.toUpperCase(),
+                onPressed: () {
+                  setState(() {
+                    selectedMode = MetaText.myChallenges.toUpperCase();
+                  });
+                },
+              ),
+              ToggleProfileButton(
+                text: MetaText.myStats,
+                isSelected: selectedMode == MetaText.myStats,
+                onPressed: () {
+                  setState(() {
+                    selectedMode = MetaText.myStats;
+                  });
+                },
+              ),
+            ],
+          ),
+          Visibility(
+            visible: selectedMode == MetaText.myChallenges.toUpperCase(),
+            child: Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.only(
+                    top: 10,
+                    right: _width * 0.05,
+                    bottom: 5,
+                  ),
+                  margin: EdgeInsets.only(top: 15, bottom: 5),
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    '${MetaText.joinedChallenges} (1)',
+                    style: TextStyle(color: MetaAsset.white, fontSize: 16),
+                  ),
+                ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: 1,
+                  padding: EdgeInsets.zero,
+                  itemBuilder: (BuildContext context, int index) {
+                    return ChallengeDetailWidget(
+                      challengeDetail: challengeDetail,
+                      width: _width,
+                    );
+                  },
+                )
+              ],
+            ),
+          ),
+          Visibility(
+            visible: selectedMode == MetaText.myStats,
+            child: Padding(
+              padding: EdgeInsets.only(
+                top: 8.0,
+                left: _width * 0.05,
+                right: _width * 0.05,
+              ),
               child: Column(
                 children: [
-                  Container(
-                    padding: EdgeInsets.only(
-                      top: 10,
-                      right: _width * 0.05,
-                      bottom: 5,
-                    ),
-                    margin: EdgeInsets.only(top: 15, bottom: 5),
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      '${MetaText.joinedChallenges} (1)',
-                      style: TextStyle(color: MetaAsset.white, fontSize: 16),
-                    ),
-                  ),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: 1,
-                    itemBuilder: (BuildContext context, int index) {
-                      return ChallengeDetailWidget(
-                        challengeDetail: challengeDetail,
-                        width: _width,
-                      );
-                    },
-                  )
-                ],
-              ),
-            ),
-            Visibility(
-              visible: selectedMode == MetaText.myStats,
-              child: Padding(
-                padding: EdgeInsets.only(
-                  top: 8.0,
-                  left: _width * 0.05,
-                  right: _width * 0.05,
-                ),
-                child: Column(
-                  children: [
-                    ListTile(
-                      contentPadding: EdgeInsets.zero,
-                      title: RichText(
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: MetaText.balance,
-                              style: TextStyle(
-                                color: MetaAsset.white,
-                                fontSize: 14,
-                              ),
-                            ),
-                            TextSpan(
-                              text: '  ${MetaText.notVisibleToOthers}',
-                              style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 14,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      subtitle: Text(
-                        '${transaction.currency}${transaction.amount.toStringAsFixed(2)}',
-                        style: TextStyle(
-                          color: MetaAsset.white,
-                          fontSize: 25,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      trailing: Icon(
-                        Icons.arrow_forward_ios,
-                        color: MetaAsset.white,
-                        size: 22,
-                      ),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                                MyBalanceScreen(),
-                          ),
-                        );
-                      },
-                    ),
-                    Container(
-                      width: _width * 0.9,
-                      decoration: BoxDecoration(
-                        border: Border(
-                          top: BorderSide(
-                            color: Colors.white70,
-                            width: 1,
-                          ),
-                          bottom: BorderSide(
-                            color: Colors.white70,
-                            width: 1,
-                          ),
-                        ),
-                      ),
-                      padding: EdgeInsets.symmetric(vertical: 10),
-                      margin: EdgeInsets.only(top: 15),
-                      child: Text(
-                        MetaText.stats.toUpperCase(),
-                        style: TextStyle(
-                          color: MetaAsset.white,
-                          fontSize: 15,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10.0, bottom: 4),
-                      child: Row(
+                  ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: RichText(
+                      text: TextSpan(
                         children: [
-                          Text(
-                            MetaText.totalChallenges,
+                          TextSpan(
+                            text: MetaText.balance,
                             style: TextStyle(
-                              color: Colors.white70,
-                              fontSize: 15,
+                              color: MetaAsset.white,
+                              fontSize: 14,
                             ),
                           ),
-                          Spacer(),
-                          Text(
-                            '$totalChallenges',
+                          TextSpan(
+                            text: '  ${MetaText.notVisibleToOthers}',
                             style: TextStyle(
-                              color: MetaAsset.accentGreen,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
+                              color: Colors.grey,
+                              fontSize: 14,
                             ),
                           ),
                         ],
                       ),
                     ),
-                    Divider(
-                      thickness: 1,
-                      color: Colors.white,
+                    subtitle: Text(
+                      '${transaction.currency}${transaction.amount.toStringAsFixed(2)}',
+                      style: TextStyle(
+                        color: MetaAsset.white,
+                        fontSize: 25,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
-                  ],
-                ),
+                    trailing: Icon(
+                      Icons.arrow_forward_ios,
+                      color: MetaAsset.white,
+                      size: 22,
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => MyBalanceScreen(),
+                        ),
+                      );
+                    },
+                  ),
+                  Container(
+                    width: _width * 0.9,
+                    decoration: BoxDecoration(
+                      border: Border(
+                        top: BorderSide(
+                          color: Colors.white70,
+                          width: 1,
+                        ),
+                        bottom: BorderSide(
+                          color: Colors.white70,
+                          width: 1,
+                        ),
+                      ),
+                    ),
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    margin: EdgeInsets.only(top: 15),
+                    child: Text(
+                      MetaText.stats.toUpperCase(),
+                      style: TextStyle(
+                        color: MetaAsset.white,
+                        fontSize: 15,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10.0, bottom: 4),
+                    child: Row(
+                      children: [
+                        Text(
+                          MetaText.totalChallenges,
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: 15,
+                          ),
+                        ),
+                        Spacer(),
+                        Text(
+                          '$totalChallenges',
+                          style: TextStyle(
+                            color: MetaAsset.accentGreen,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Divider(
+                    thickness: 1,
+                    color: Colors.white,
+                  ),
+                ],
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }
