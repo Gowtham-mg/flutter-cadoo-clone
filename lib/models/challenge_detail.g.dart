@@ -15,12 +15,14 @@ ChallengeDetail _$ChallengeDetailFromJson(Map<String, dynamic> json) {
         : ChallengeStat.fromJson(json['challengeStat']),
     json['isJoined'] as bool,
     json['icon'] as String,
+    json['id'] as String,
   );
 }
 
 Map<String, dynamic> _$ChallengeDetailToJson(ChallengeDetail instance) =>
     <String, dynamic>{
       'title': instance.title,
+      'id': instance.id,
       'description': instance.description,
       'challengeStat': instance.challengeStat?.toJson(),
       'isJoined': instance.isJoined,

@@ -47,7 +47,7 @@ class MetaText {
   static const String balanceHistory = "Balance History";
   static const String selectAmountToAddBalance =
       "Select an amount to add a balance";
-  // static const String stats = "Stats";
+  static const String topWinners = "Top Winners";
   // static const String stats = "Stats";
 
   // static const String stats = "Stats";

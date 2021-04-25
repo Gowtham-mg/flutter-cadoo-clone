@@ -8,18 +8,31 @@ class Transaction {
   final String title;
   final DateTime date;
   final double amount;
+  final String id;
 
-  Transaction(this.currency, this.title, this.date, this.amount);
+  Transaction(this.currency, this.title, this.date, this.amount, this.id);
 
-  Transaction.named({this.currency, this.title, this.date, this.amount});
+  Transaction.named({
+    this.currency,
+    this.title,
+    this.date,
+    this.amount,
+    this.id,
+  });
 
-  Transaction copyWith(
-      {String currency, String title, DateTime date, double amount}) {
+  Transaction copyWith({
+    String currency,
+    String title,
+    DateTime date,
+    double amount,
+    String id,
+  }) {
     return Transaction.named(
       currency: currency ?? this.currency,
       title: title ?? this.title,
       date: date ?? this.date,
       amount: amount ?? this.amount,
+      id: id ?? this.id,
     );
   }
 

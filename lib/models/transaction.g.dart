@@ -12,6 +12,7 @@ Transaction _$TransactionFromJson(Map<String, dynamic> json) {
     json['title'] as String,
     json['date'] == null ? null : DateTime.parse(json['date'] as String),
     (json['amount'] as num)?.toDouble(),
+    json['id'] as String,
   );
 }
 
@@ -21,4 +22,5 @@ Map<String, dynamic> _$TransactionToJson(Transaction instance) =>
       'title': instance.title,
       'date': instance.date?.toIso8601String(),
       'amount': instance.amount,
+      'id': instance.id,
     };

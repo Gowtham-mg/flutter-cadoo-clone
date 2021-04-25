@@ -13,6 +13,7 @@ class Profile {
   final String country;
   final String state;
   final String city;
+  final String id;
 
   Profile(
     this.firstName,
@@ -24,6 +25,7 @@ class Profile {
     this.country,
     this.state,
     this.city,
+    this.id,
   );
 
   Profile.named({
@@ -36,6 +38,7 @@ class Profile {
     this.country,
     this.state,
     this.city,
+    this.id,
   });
 
   Profile copyWith({
@@ -48,6 +51,7 @@ class Profile {
     String country,
     String state,
     String city,
+    String id,
   }) {
     return Profile.named(
       firstName: firstName ?? this.firstName,
@@ -59,6 +63,7 @@ class Profile {
       country: country ?? this.country,
       state: state ?? this.state,
       city: city ?? this.city,
+      id: id ?? this.id,
     );
   }
 

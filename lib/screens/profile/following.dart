@@ -3,7 +3,7 @@ import 'package:cadoo/meta_asset/meta_text.dart';
 import 'package:cadoo/widgets/scaffold.dart';
 import 'package:flutter/material.dart';
 
-class FollowersScreen extends StatelessWidget {
+class FollowingScreen extends StatelessWidget {
   final int following = 0;
   final TextEditingController usernameController = TextEditingController();
   @override

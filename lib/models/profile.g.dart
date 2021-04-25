@@ -17,6 +17,7 @@ Profile _$ProfileFromJson(Map<String, dynamic> json) {
     json['country'] as String,
     json['state'] as String,
     json['city'] as String,
+    json['id'] as String,
   );
 }
 
@@ -30,4 +31,5 @@ Map<String, dynamic> _$ProfileToJson(Profile instance) => <String, dynamic>{
       'country': instance.country,
       'state': instance.state,
       'city': instance.city,
+      'id': instance.id,
     };

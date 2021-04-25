@@ -3,6 +3,7 @@ import 'package:cadoo/meta_asset/meta_text.dart';
 import 'package:cadoo/models/challenge_detail.dart';
 import 'package:cadoo/models/challenge_stat.dart';
 import 'package:cadoo/models/transaction.dart';
+import 'package:cadoo/routes.dart';
 import 'package:cadoo/screens/balance/funds_screen.dart';
 import 'package:cadoo/widgets/home_challenge.dart';
 import 'package:cadoo/widgets/scaffold.dart';
@@ -134,19 +135,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         Wrap(
                           children: [
-                            Text(
-                              '$followers FOLLOWERS',
-                              style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 16,
+                            TextButton(
+                              child: Text(
+                                '$followers FOLLOWERS',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 16,
+                                ),
                               ),
+                              onPressed: () {
+                                Navigator.pushNamed(context, Routes.followers);
+                              },
                             ),
-                            Text(
-                              '$following FOLLOWING',
-                              style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 16,
+                            TextButton(
+                              child: Text(
+                                '$following FOLLOWING',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 16,
+                                ),
                               ),
+                              onPressed: () {
+                                Navigator.pushNamed(context, Routes.following);
+                              },
                             ),
                           ],
                         ),

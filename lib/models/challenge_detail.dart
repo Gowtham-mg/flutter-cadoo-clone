@@ -6,6 +6,7 @@ part 'challenge_detail.g.dart';
 @JsonSerializable(explicitToJson: true)
 class ChallengeDetail {
   final String title;
+  final String id;
   final String description;
   final ChallengeStat challengeStat;
   final bool isJoined;
@@ -17,6 +18,7 @@ class ChallengeDetail {
     this.challengeStat,
     this.isJoined,
     this.icon,
+    this.id,
   );
 
   ChallengeDetail.named({
@@ -25,6 +27,7 @@ class ChallengeDetail {
     this.challengeStat,
     this.isJoined,
     this.icon,
+    this.id,
   });
 
   ChallengeDetail copyWith({
@@ -33,6 +36,7 @@ class ChallengeDetail {
     ChallengeStat challengeStat,
     bool isJoined,
     String icon,
+    String id,
   }) {
     return ChallengeDetail.named(
       title: title ?? this.title,
@@ -40,6 +44,7 @@ class ChallengeDetail {
       challengeStat: challengeStat ?? this.challengeStat,
       isJoined: isJoined ?? this.isJoined,
       icon: icon ?? this.icon,
+      id: id ?? this.id,
     );
   }
 
