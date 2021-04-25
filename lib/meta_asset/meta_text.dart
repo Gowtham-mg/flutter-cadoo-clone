@@ -48,6 +48,17 @@ class MetaText {
   static const String selectAmountToAddBalance =
       "Select an amount to add a balance";
   static const String topWinners = "Top Winners";
+  static const String challenges = "CHALLENGES";
+  static const String currentChallenges = "CURRENT CHALLENGES";
+  static const String letsWalkThroughCadoo = "Let's walk through Cadoo";
+  static const String needHelpAskUsAnything = "Need help? Ask us anything";
+  static const String challengeHasntStartedYet = "Challenge hasn't started yet";
+  static const String inviteAFriendToThisChallenge =
+      "Invite a friend to this challenge";
+  static const String keepYourselfAccountableAndInvite =
+      "Keep yourself more accountable and invite";
+  static const String joinThisChallenge = "Join This Challenge";
+  // static const String stats = "Stats";
   // static const String stats = "Stats";
 
   // static const String stats = "Stats";
@@ -62,6 +73,7 @@ class MetaText {
   static const String noRegisteredTickets =
       "You don't have any registered tickets 🙄";
   static const String viewVoucherDetails = "View Voucher Details and Rules";
+  static const String viewChallengeDetails = "View Challenge Details and Rules";
 
   static const String totalChallenges = "Total Challenges";
   static const String cadooPoints = "Cadoo Points";

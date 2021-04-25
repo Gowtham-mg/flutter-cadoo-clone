@@ -48,13 +48,11 @@ class ChallengeStatBadge extends StatelessWidget {
 }
 
 class ChallengeDetailWidget extends StatelessWidget {
-  final String image;
   final double width;
   final ChallengeDetail challengeDetail;
 
   const ChallengeDetailWidget({
     Key key,
-    @required this.image,
     @required this.challengeDetail,
     @required this.width,
   }) : super(key: key);
@@ -66,7 +64,7 @@ class ChallengeDetailWidget extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(20)),
         image: DecorationImage(
-          image: NetworkImage(image),
+          image: NetworkImage(challengeDetail.image),
           fit: BoxFit.cover,
         ),
       ),

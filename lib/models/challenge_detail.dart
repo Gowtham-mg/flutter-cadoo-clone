@@ -11,6 +11,7 @@ class ChallengeDetail {
   final ChallengeStat challengeStat;
   final bool isJoined;
   final String icon;
+  final String image;
 
   ChallengeDetail(
     this.title,
@@ -19,6 +20,7 @@ class ChallengeDetail {
     this.isJoined,
     this.icon,
     this.id,
+    this.image,
   );
 
   ChallengeDetail.named({
@@ -28,6 +30,7 @@ class ChallengeDetail {
     this.isJoined,
     this.icon,
     this.id,
+    this.image,
   });
 
   ChallengeDetail copyWith({
@@ -37,6 +40,7 @@ class ChallengeDetail {
     bool isJoined,
     String icon,
     String id,
+    String image,
   }) {
     return ChallengeDetail.named(
       title: title ?? this.title,
@@ -45,6 +49,7 @@ class ChallengeDetail {
       isJoined: isJoined ?? this.isJoined,
       icon: icon ?? this.icon,
       id: id ?? this.id,
+      image: image ?? this.image,
     );
   }
 

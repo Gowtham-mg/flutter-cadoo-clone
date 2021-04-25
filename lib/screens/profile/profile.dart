@@ -3,9 +3,9 @@ import 'package:cadoo/meta_asset/meta_text.dart';
 import 'package:cadoo/models/challenge_detail.dart';
 import 'package:cadoo/models/challenge_stat.dart';
 import 'package:cadoo/models/transaction.dart';
-import 'package:cadoo/routes.dart';
 import 'package:cadoo/screens/balance/funds_screen.dart';
 import 'package:cadoo/widgets/home_challenge.dart';
+import 'package:cadoo/widgets/profile_header.dart';
 import 'package:cadoo/widgets/scaffold.dart';
 import 'package:flutter/material.dart';
 
@@ -36,6 +36,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
       endDate: DateTime.now().add(Duration(days: 30)),
       registrationEndDate: DateTime.now().add(Duration(days: 10)),
     ),
+    image:
+        'https://images.unsplash.com/photo-1540474565760-95c80cfdc021?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
   );
 
   final Transaction transaction = Transaction.named(
@@ -78,94 +80,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              padding: EdgeInsets.only(
-                top: 25,
-                bottom: 8,
-                left: _width * 0.05,
-                right: _width * 0.05,
-              ),
-              child: Row(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(50),
-                    child: Image.network(
-                      'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVvcGxlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-                      fit: BoxFit.cover,
-                      height: 100,
-                      width: 100,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 12),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          name,
-                          style: TextStyle(
-                            color: MetaAsset.white,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 12.0, bottom: 5),
-                          // ignore: deprecated_member_use
-                          child: FlatButton(
-                            onPressed: () {},
-                            shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              side: BorderSide(
-                                color: MetaAsset.white,
-                                width: 1,
-                              ),
-                            ),
-                            color: MetaAsset.black,
-                            child: Text(
-                              MetaText.editProfile,
-                              style: TextStyle(
-                                color: MetaAsset.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Wrap(
-                          children: [
-                            TextButton(
-                              child: Text(
-                                '$followers FOLLOWERS',
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 16,
-                                ),
-                              ),
-                              onPressed: () {
-                                Navigator.pushNamed(context, Routes.followers);
-                              },
-                            ),
-                            TextButton(
-                              child: Text(
-                                '$following FOLLOWING',
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 16,
-                                ),
-                              ),
-                              onPressed: () {
-                                Navigator.pushNamed(context, Routes.following);
-                              },
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
+            ProfileHeader(
+              width: _width,
+              name: name,
+              followers: followers,
+              following: following,
             ),
             TabBar(
               onTap: (int index) {},
@@ -225,8 +144,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     itemCount: 1,
                     itemBuilder: (BuildContext context, int index) {
                       return ChallengeDetailWidget(
-                        image:
-                            'https://images.unsplash.com/photo-1540474565760-95c80cfdc021?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
                         challengeDetail: challengeDetail,
                         width: _width,
                       );

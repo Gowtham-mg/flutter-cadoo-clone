@@ -46,4 +46,10 @@ class MetaStyles {
     fontSize: 30,
     fontWeight: FontWeight.w500,
   );
+
+  static const TextStyle darkGrey = TextStyle(
+    color: Colors.grey,
+    fontSize: 13,
+    fontWeight: FontWeight.w500,
+  );
 }

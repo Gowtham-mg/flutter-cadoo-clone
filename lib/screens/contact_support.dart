@@ -1,4 +1,5 @@
 import 'package:cadoo/meta_asset/meta_asset.dart';
+import 'package:cadoo/meta_asset/meta_styles.dart';
 import 'package:cadoo/meta_asset/meta_text.dart';
 import 'package:cadoo/utils/date_time_helper.dart';
 import 'package:cadoo/widgets/scaffold.dart';
@@ -6,12 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactSupport extends StatelessWidget {
-  final TextStyle darkGrey = TextStyle(
-    color: Colors.grey,
-    fontSize: 13,
-    fontWeight: FontWeight.w500,
-  );
-
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
@@ -80,14 +75,15 @@ class ContactSupport extends StatelessWidget {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Text('Gowtham', style: darkGrey),
+                                              Text('Gowtham',
+                                                  style: MetaStyles.darkGrey),
                                               Text(
                                                 '${DateTimeHelper.statCalendarDay(
                                                   DateTime.now().subtract(
                                                       Duration(days: 1)),
                                                   DateTime.now(),
                                                 )} ago',
-                                                style: darkGrey,
+                                                style: MetaStyles.darkGrey,
                                               ),
                                             ],
                                           ),
@@ -188,7 +184,7 @@ class ContactSupport extends StatelessWidget {
                                             context: context,
                                             builder: (BuildContext context) {
                                               return SearchArticleDialog(
-                                                darkGrey: darkGrey,
+                                                darkGrey: MetaStyles.darkGrey,
                                               );
                                             },
                                           );
@@ -252,7 +248,7 @@ class ContactSupport extends StatelessWidget {
                   Image.asset(MetaAsset.intercomm, height: 20, width: 20),
                   Text(
                     '  We run on Intercom',
-                    style: darkGrey.copyWith(fontSize: 16),
+                    style: MetaStyles.darkGrey.copyWith(fontSize: 16),
                   )
                 ],
               ),

@@ -6,6 +6,7 @@ import 'package:cadoo/screens/balance/withdraw.dart';
 import 'package:cadoo/screens/contact_support.dart';
 import 'package:cadoo/screens/balance/funds_screen.dart';
 import 'package:cadoo/screens/home.dart';
+import 'package:cadoo/screens/official_challenge_rules.dart';
 import 'package:cadoo/screens/onboarding.dart';
 import 'package:cadoo/screens/profile/edit_profile.dart';
 import 'package:cadoo/screens/profile/following.dart';
@@ -31,6 +32,7 @@ class Routes {
   static const String editProfile = "/profile/edit";
   static const String followers = "/profile/followers";
   static const String following = "/profile/following";
+  static const String officialChallengeRules = "/challenge/rules";
 
   static final bool isIOS = Platform.isIOS;
 
@@ -73,6 +75,12 @@ class Routes {
         return isIOS
             ? CupertinoPageRoute(builder: (BuildContext context) => Referrals())
             : MaterialPageRoute(builder: (BuildContext context) => Referrals());
+      case Routes.officialChallengeRules:
+        return isIOS
+            ? CupertinoPageRoute(
+                builder: (BuildContext context) => OfficialChallengeRules())
+            : MaterialPageRoute(
+                builder: (BuildContext context) => OfficialChallengeRules());
       case Routes.editProfile:
         return isIOS
             ? CupertinoPageRoute(

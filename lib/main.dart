@@ -1,4 +1,5 @@
 import 'package:cadoo/routes.dart';
+import 'package:cadoo/screens/challenge_info.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hive/hive.dart';
@@ -18,8 +19,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      home: ChallengeInfo(),
       onGenerateRoute: Routes.generateRoute,
-      initialRoute: Routes.myBalance,
+      // initialRoute: Routes.myBalance,
     );
   }
 }

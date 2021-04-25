@@ -24,6 +24,8 @@ class HomeScreen extends StatelessWidget {
       endDate: DateTime.now().add(Duration(days: 30)),
       registrationEndDate: DateTime.now().add(Duration(days: 10)),
     ),
+    image:
+        'https://images.unsplash.com/photo-1540474565760-95c80cfdc021?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
   );
 
   final Widget categoryDivider = Divider(
@@ -141,8 +143,6 @@ class HomeScreen extends StatelessWidget {
                             itemCount: 20,
                             itemBuilder: (BuildContext context, int index) {
                               return ChallengeDetailWidget(
-                                image:
-                                    'https://images.unsplash.com/photo-1540474565760-95c80cfdc021?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
                                 challengeDetail: challengeDetail,
                                 width: _width,
                               );
@@ -161,8 +161,6 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       ChallengeDetailWidget(
-                        image:
-                            'https://images.unsplash.com/photo-1540474565760-95c80cfdc021?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
                         challengeDetail: challengeDetail,
                         width: _width,
                       ),
