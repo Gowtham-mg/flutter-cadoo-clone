@@ -1,5 +1,6 @@
 import 'package:cadoo/meta_asset/meta_asset.dart';
 import 'package:cadoo/meta_asset/meta_text.dart';
+import 'package:cadoo/routes.dart';
 import 'package:cadoo/widgets/scaffold.dart';
 import 'package:flutter/material.dart';
 
@@ -85,7 +86,7 @@ class VoucherDetails extends StatelessWidget {
                     // ignore: deprecated_member_use
                     child: FlatButton(
                       onPressed: () {
-                        // TODO:
+                        Navigator.pushNamed(context, Routes.referrals);
                       },
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -130,6 +131,7 @@ class VoucherDetails extends StatelessWidget {
                 //     return ContactDialog();
                 //   },
                 // );
+                Navigator.pushNamed(context, Routes.contactSupport);
               },
             ),
           ],

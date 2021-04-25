@@ -36,6 +36,19 @@ class MetaText {
       "You are not following anyone yet 🤔";
   static const String whoImFollowing = "Who I'm Following";
   static const String searchAccountOnCadoo = "Search Accounts on Cadoo";
+  static const String cancel = "CANCEL";
+  static const String ok = "OK";
+  static const String searchOurArticles = "Search our articles";
+  static const String amount = "Amount";
+  static const String recipientEmail = "Recipient Email";
+  static const String requestPayout = "Request PayOut";
+  static const String seeAll = "See All";
+  static const String back = "Back";
+  static const String balanceHistory = "Balance History";
+  static const String selectAmountToAddBalance =
+      "Select an amount to add a balance";
+  // static const String stats = "Stats";
+  // static const String stats = "Stats";
 
   // static const String stats = "Stats";
 

@@ -19,4 +19,8 @@ class MetaAsset {
   static const String salary = "assets/icons/salary.png";
 
   static const String menu = "assets/icons/menu.png";
+  static const String twitter = "assets/icons/twitter.png";
+  static const String envelope = "assets/icons/envelope.png";
+  static const String share = "assets/icons/share.png";
+  static const String facebookReferral = "assets/icons/facebook-referral.png";
 }

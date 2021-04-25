@@ -1,9 +1,13 @@
 import 'dart:io';
 
 import 'package:cadoo/screens/auth.dart';
-import 'package:cadoo/screens/funds_screen.dart';
+import 'package:cadoo/screens/balance/balance_history.dart';
+import 'package:cadoo/screens/balance/withdraw.dart';
+import 'package:cadoo/screens/contact_support.dart';
+import 'package:cadoo/screens/balance/funds_screen.dart';
 import 'package:cadoo/screens/home.dart';
 import 'package:cadoo/screens/onboarding.dart';
+import 'package:cadoo/screens/referrals.dart';
 import 'package:cadoo/screens/voucher_details.dart';
 import 'package:cadoo/screens/write_reply.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,10 +19,15 @@ class Routes {
   static const String home = "/home";
   static const String voucherDetails = "/voucher_details";
   static const String writeReply = "/write_reply";
-  static const String myBalance = "/my_balance";
+  static const String myBalance = "/balance";
+  static const String referrals = "/referrals";
+  static const String contactSupport = "/contact_support";
+  static const String withdraw = "/withdraw";
+  static const String balanceHistory = "/balance/history";
+
+  static final bool isIOS = Platform.isIOS;
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    final bool isIOS = Platform.isIOS;
     switch (settings.name) {
       case Routes.onboarding:
         return isIOS
@@ -53,6 +62,29 @@ class Routes {
                 builder: (BuildContext context) => MyBalanceScreen())
             : MaterialPageRoute(
                 builder: (BuildContext context) => MyBalanceScreen());
+      case Routes.referrals:
+        return isIOS
+            ? CupertinoPageRoute(builder: (BuildContext context) => Referrals())
+            : MaterialPageRoute(builder: (BuildContext context) => Referrals());
+      case Routes.balanceHistory:
+        return isIOS
+            ? CupertinoPageRoute(
+                builder: (BuildContext context) => BalanceHistory())
+            : MaterialPageRoute(
+                builder: (BuildContext context) => BalanceHistory());
+      case Routes.withdraw:
+        return isIOS
+            ? CupertinoPageRoute(
+                builder: (BuildContext context) => WithdrawScreen())
+            : MaterialPageRoute(
+                builder: (BuildContext context) => WithdrawScreen());
+      case Routes.contactSupport:
+        return isIOS
+            ? CupertinoPageRoute(
+                builder: (BuildContext context) => ContactSupport())
+            : MaterialPageRoute(
+                builder: (BuildContext context) => ContactSupport());
+
       case Routes.writeReply:
         return isIOS
             ? CupertinoPageRoute(

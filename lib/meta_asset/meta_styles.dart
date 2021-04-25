@@ -40,4 +40,10 @@ class MetaStyles {
     fontSize: 18,
     fontWeight: FontWeight.w500,
   );
+
+  static const TextStyle balanceStyle = TextStyle(
+    color: MetaAsset.white,
+    fontSize: 30,
+    fontWeight: FontWeight.w500,
+  );
 }

@@ -3,7 +3,7 @@ import 'package:cadoo/meta_asset/meta_text.dart';
 import 'package:cadoo/models/challenge_detail.dart';
 import 'package:cadoo/models/challenge_stat.dart';
 import 'package:cadoo/models/transaction.dart';
-import 'package:cadoo/screens/funds_screen.dart';
+import 'package:cadoo/screens/balance/funds_screen.dart';
 import 'package:cadoo/widgets/home_challenge.dart';
 import 'package:cadoo/widgets/scaffold.dart';
 import 'package:flutter/material.dart';
