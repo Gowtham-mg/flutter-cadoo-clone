@@ -10,7 +10,7 @@ class TopWinners extends StatelessWidget {
     amount: 500.00,
     currency: '\$',
     image:
-        "https://images.unsplash.com/photo-1619263883792-f085666a64b4?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        "https://images.unsplash.com/photo-1609505110780-f51aca88115d?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0OHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60",
     name: 'Gowtham',
     rank: 1,
   );
@@ -20,6 +20,7 @@ class TopWinners extends StatelessWidget {
     return CustomScaffold(
       width: _width,
       appbar: AppBar(
+        backgroundColor: MetaAsset.black,
         centerTitle: true,
         title: Text(
           MetaText.topWinners,
@@ -30,9 +31,12 @@ class TopWinners extends StatelessWidget {
         ),
         leading: Offstage(),
       ),
-      child: ListView.builder(
+      child: ListView.separated(
         padding: EdgeInsets.symmetric(horizontal: _width * 0.05, vertical: 10),
         itemCount: 100,
+        separatorBuilder: (BuildContext context, int index) {
+          return SizedBox(height: 15);
+        },
         itemBuilder: (BuildContext context, int index) {
           return Row(
             children: [
@@ -40,9 +44,18 @@ class TopWinners extends StatelessWidget {
                 decoration: BoxDecoration(
                   color:
                       (index + 1) % 2 == 0 ? MetaAsset.black : MetaAsset.white,
+                  borderRadius: BorderRadius.all(Radius.circular(3)),
+                  border: Border.all(
+                    color: (index + 1) % 2 == 0
+                        ? MetaAsset.white
+                        : MetaAsset.white,
+                    width: 1.5,
+                  ),
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 margin: EdgeInsets.only(right: 10),
+                alignment: Alignment.center,
+                width: 28,
+                height: 28,
                 child: Text(
                   (index + 1).toString(),
                   style: TextStyle(
@@ -53,11 +66,11 @@ class TopWinners extends StatelessWidget {
                 ),
               ),
               ClipRRect(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(12.5),
                 child: Image.network(
                   rank.image,
-                  height: 20,
-                  width: 20,
+                  height: 25,
+                  width: 25,
                   fit: BoxFit.cover,
                 ),
               ),

@@ -378,14 +378,18 @@ class SearchArticleDialog extends StatelessWidget {
       ),
       actions: [
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           child: Text(
             MetaText.cancel,
             style: TextStyle(color: MetaAsset.black),
           ),
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           child: Text(
             MetaText.ok,
             style: TextStyle(color: MetaAsset.black),

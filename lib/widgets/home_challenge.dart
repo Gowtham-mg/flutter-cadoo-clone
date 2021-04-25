@@ -2,6 +2,7 @@ import 'package:cadoo/meta_asset/meta_asset.dart';
 import 'package:cadoo/meta_asset/meta_styles.dart';
 import 'package:cadoo/meta_asset/meta_text.dart';
 import 'package:cadoo/models/challenge_detail.dart';
+import 'package:cadoo/routes.dart';
 import 'package:cadoo/utils/date_time_helper.dart';
 import 'package:flutter/material.dart';
 
@@ -59,108 +60,120 @@ class ChallengeDetailWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width * 0.85,
-      height: 170,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(20)),
         image: DecorationImage(
           image: NetworkImage(challengeDetail.image),
           fit: BoxFit.cover,
         ),
+        borderRadius: BorderRadius.all(Radius.circular(20)),
       ),
+      width: width * 0.85,
+      height: 170,
+
       margin: EdgeInsets.only(right: width * 0.05),
-      padding: EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 8),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0, bottom: 5),
-                  child: Text(
-                    challengeDetail.title,
+      // ignore: deprecated_member_use
+      child: FlatButton(
+        onPressed: () {
+          Navigator.pushNamed(context, Routes.challengeInfo);
+        },
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+        ),
+        padding: EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 8),
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0, bottom: 5),
+                    child: Text(
+                      challengeDetail.title,
+                      style: TextStyle(
+                        color: MetaAsset.white,
+                        fontSize: 25,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      maxLines: 1,
+                    ),
+                  ),
+                  Text(
+                    challengeDetail.description,
                     style: TextStyle(
                       color: MetaAsset.white,
-                      fontSize: 25,
+                      fontSize:
+                          challengeDetail.description.length <= 30 ? 18 : 13,
                       fontWeight: FontWeight.w500,
                     ),
-                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
                   ),
-                ),
-                Text(
-                  challengeDetail.description,
-                  style: TextStyle(
-                    color: MetaAsset.white,
-                    fontSize:
-                        challengeDetail.description.length <= 30 ? 18 : 13,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
-                ),
-                Spacer(),
-                Row(
-                  children: [
-                    ClipRRect(
-                      child: Image.network(
-                        challengeDetail.icon,
-                        fit: BoxFit.cover,
-                        height: 30,
-                        width: 30,
+                  Spacer(),
+                  Row(
+                    children: [
+                      ClipRRect(
+                        child: Image.network(
+                          challengeDetail.icon,
+                          fit: BoxFit.cover,
+                          height: 30,
+                          width: 30,
+                        ),
+                        borderRadius: BorderRadius.circular(15),
                       ),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    Visibility(
-                      visible: challengeDetail.isJoined,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
-                        child: Text(
-                          MetaText.joined,
-                          style: TextStyle(
-                            color: MetaAsset.white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
+                      Visibility(
+                        visible: challengeDetail.isJoined,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Text(
+                            MetaText.joined,
+                            style: TextStyle(
+                              color: MetaAsset.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
                       ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            if (challengeDetail.challengeStat != null)
+              SizedBox(
+                width: 75,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ChallengeStatBadge(
+                      icon: Icons.people,
+                      stat:
+                          challengeDetail.challengeStat.participants.toString(),
                     ),
+                    ChallengeStatBadge(
+                      icon: Icons.attach_money,
+                      stat: challengeDetail.challengeStat.prizePool.toString(),
+                    ),
+                    ChallengeStatBadge(
+                      icon: Icons.calendar_today,
+                      stat: DateTimeHelper.statCalendarDay(
+                        challengeDetail.challengeStat.startDate,
+                        challengeDetail.challengeStat.endDate,
+                      ),
+                    ),
+                    ChallengeStatBadge(
+                      icon: Icons.calendar_today,
+                      stat: DateTimeHelper.statEndRegistrationDay(
+                        challengeDetail.challengeStat.registrationEndDate,
+                      ),
+                    )
                   ],
                 ),
-              ],
-            ),
-          ),
-          SizedBox(
-            width: 75,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ChallengeStatBadge(
-                  icon: Icons.people,
-                  stat: challengeDetail.challengeStat.participants.toString(),
-                ),
-                ChallengeStatBadge(
-                  icon: Icons.attach_money,
-                  stat: challengeDetail.challengeStat.prizePool.toString(),
-                ),
-                ChallengeStatBadge(
-                  icon: Icons.calendar_today,
-                  stat: DateTimeHelper.statCalendarDay(
-                    challengeDetail.challengeStat.startDate,
-                    challengeDetail.challengeStat.endDate,
-                  ),
-                ),
-                ChallengeStatBadge(
-                  icon: Icons.calendar_today,
-                  stat: DateTimeHelper.statEndRegistrationDay(
-                    challengeDetail.challengeStat.registrationEndDate,
-                  ),
-                )
-              ],
-            ),
-          )
-        ],
+              )
+          ],
+        ),
       ),
     );
   }

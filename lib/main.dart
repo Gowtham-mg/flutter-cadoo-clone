@@ -19,9 +19,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ChallengeInfo(),
+      // home: ChallengeInfo(),
       onGenerateRoute: Routes.generateRoute,
-      // initialRoute: Routes.myBalance,
+      initialRoute: Routes.profile,
     );
   }
 }

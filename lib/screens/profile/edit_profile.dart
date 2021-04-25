@@ -117,86 +117,89 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                 ],
               ),
-              EditProfileContainer(
-                title: MetaText.address,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 6),
-                    child: EditProfileTextFormField(
-                      hintText: MetaText.street,
+              Padding(
+                padding: const EdgeInsets.only(top: 25.0, bottom: 10),
+                child: EditProfileContainer(
+                  title: MetaText.address,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 6),
+                      child: EditProfileTextFormField(
+                        hintText: MetaText.street,
+                        onSaved: (String val) {
+                          setState(() {
+                            profile = profile.copyWith(street: val.trim());
+                          });
+                        },
+                        validator: (String val) {
+                          return null;
+                        },
+                      ),
+                    ),
+                    EditProfileTextFormField(
+                      hintText: MetaText.zipCode,
                       onSaved: (String val) {
                         setState(() {
-                          profile = profile.copyWith(street: val.trim());
+                          profile = profile.copyWith(zipCode: val.trim());
                         });
                       },
                       validator: (String val) {
                         return null;
                       },
                     ),
-                  ),
-                  EditProfileTextFormField(
-                    hintText: MetaText.zipCode,
-                    onSaved: (String val) {
-                      setState(() {
-                        profile = profile.copyWith(zipCode: val.trim());
-                      });
-                    },
-                    validator: (String val) {
-                      return null;
-                    },
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 6),
-                    child: EditProfileTextFormField(
-                      hintText: MetaText.country,
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 6),
+                      child: EditProfileTextFormField(
+                        hintText: MetaText.country,
+                        onSaved: (String val) {
+                          setState(() {
+                            profile = profile.copyWith(country: val.trim());
+                          });
+                        },
+                        validator: (String val) {
+                          if (val.isEmpty) {
+                            return 'Please enter a country';
+                          } else {
+                            return null;
+                          }
+                        },
+                      ),
+                    ),
+                    EditProfileTextFormField(
+                      hintText: MetaText.state,
                       onSaved: (String val) {
                         setState(() {
-                          profile = profile.copyWith(country: val.trim());
+                          profile = profile.copyWith(state: val.trim());
                         });
                       },
                       validator: (String val) {
                         if (val.isEmpty) {
-                          return 'Please enter a country';
+                          return 'Please enter a state';
                         } else {
                           return null;
                         }
                       },
                     ),
-                  ),
-                  EditProfileTextFormField(
-                    hintText: MetaText.state,
-                    onSaved: (String val) {
-                      setState(() {
-                        profile = profile.copyWith(state: val.trim());
-                      });
-                    },
-                    validator: (String val) {
-                      if (val.isEmpty) {
-                        return 'Please enter a state';
-                      } else {
-                        return null;
-                      }
-                    },
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 6),
-                    child: EditProfileTextFormField(
-                      hintText: MetaText.city,
-                      onSaved: (String val) {
-                        setState(() {
-                          profile = profile.copyWith(city: val.trim());
-                        });
-                      },
-                      validator: (String val) {
-                        if (val.isEmpty) {
-                          return 'Please enter a city';
-                        } else {
-                          return null;
-                        }
-                      },
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 6),
+                      child: EditProfileTextFormField(
+                        hintText: MetaText.city,
+                        onSaved: (String val) {
+                          setState(() {
+                            profile = profile.copyWith(city: val.trim());
+                          });
+                        },
+                        validator: (String val) {
+                          if (val.isEmpty) {
+                            return 'Please enter a city';
+                          } else {
+                            return null;
+                          }
+                        },
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               )
             ],
           ),
@@ -223,7 +226,7 @@ class EditProfileContainer extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

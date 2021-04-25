@@ -58,7 +58,12 @@ class MetaText {
   static const String keepYourselfAccountableAndInvite =
       "Keep yourself more accountable and invite";
   static const String joinThisChallenge = "Join This Challenge";
-  // static const String stats = "Stats";
+  static const String connections = "Connections";
+  static const String connected = "CONNECTED";
+  static const String notConnected = "NOT CONNECTED";
+  static const String connect = "CONNECT";
+  static const String disconnect = "DISCONNECT";
+
   // static const String stats = "Stats";
 
   // static const String stats = "Stats";
@@ -85,6 +90,9 @@ class MetaText {
   static const String lastName = "Last Name";
   static const String email = "Email";
   static const String password = "Password";
+  static const String newpassword = "New Password";
+  static const String reenterNewPassword = "Re-enter New Password";
+
   static const String signUp = "Sign Up";
 
   static const String newChallenges = "New Challenges";

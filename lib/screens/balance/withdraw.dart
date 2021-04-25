@@ -79,7 +79,9 @@ class WithdrawScreen extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(25)),
                   ),
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [

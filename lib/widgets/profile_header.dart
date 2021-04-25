@@ -26,6 +26,7 @@ class ProfileHeader extends StatelessWidget {
         left: width * 0.05,
         right: width * 0.05,
       ),
+      width: width,
       child: Row(
         children: [
           ClipRRect(
@@ -54,9 +55,11 @@ class ProfileHeader extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 12.0, bottom: 5),
                   // ignore: deprecated_member_use
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, Routes.editProfile);
+                    },
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
                       side: BorderSide(
                         color: MetaAsset.white,
                         width: 1,
@@ -67,32 +70,43 @@ class ProfileHeader extends StatelessWidget {
                       MetaText.editProfile,
                       style: TextStyle(
                         color: MetaAsset.white,
-                        fontSize: 16,
+                        fontSize: 15,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),
                 ),
                 Wrap(
+                  direction: Axis.horizontal,
+                  spacing: 10,
+                  runAlignment: WrapAlignment.start,
                   children: [
-                    TextButton(
+                    // ignore: deprecated_member_use
+                    FlatButton(
+                      minWidth: 0,
+                      padding: EdgeInsets.zero,
+                      height: 0,
                       child: Text(
                         '$followers FOLLOWERS',
                         style: TextStyle(
                           color: Colors.grey,
-                          fontSize: 16,
+                          fontSize: 14,
                         ),
                       ),
                       onPressed: () {
                         Navigator.pushNamed(context, Routes.followers);
                       },
                     ),
-                    TextButton(
+                    // ignore: deprecated_member_use
+                    FlatButton(
+                      minWidth: 0,
+                      padding: EdgeInsets.zero,
+                      height: 0,
                       child: Text(
                         '$following FOLLOWING',
                         style: TextStyle(
                           color: Colors.grey,
-                          fontSize: 16,
+                          fontSize: 14,
                         ),
                       ),
                       onPressed: () {

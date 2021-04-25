@@ -1,8 +1,8 @@
 import 'package:cadoo/meta_asset/meta_asset.dart';
 import 'package:cadoo/meta_asset/meta_text.dart';
 import 'package:cadoo/models/challenge_detail.dart';
-import 'package:cadoo/models/challenge_stat.dart';
 import 'package:cadoo/models/transaction.dart';
+import 'package:cadoo/routes.dart';
 import 'package:cadoo/screens/balance/funds_screen.dart';
 import 'package:cadoo/widgets/home_challenge.dart';
 import 'package:cadoo/widgets/profile_header.dart';
@@ -29,13 +29,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
         'You have to run 40 miles total. Do you have what it takes? Tak on May and go for 40. Runs only. Runs must be a 16 minute mile pace or faster',
     icon:
         'https://images.unsplash.com/photo-1579623261984-41f9a81d4044?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cmVkJTIwbG9nb3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-    challengeStat: ChallengeStat.named(
-      participants: 1,
-      prizePool: 6.5,
-      startDate: DateTime.now(),
-      endDate: DateTime.now().add(Duration(days: 30)),
-      registrationEndDate: DateTime.now().add(Duration(days: 10)),
-    ),
     image:
         'https://images.unsplash.com/photo-1540474565760-95c80cfdc021?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
   );
@@ -45,12 +38,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     currency: '\$',
     date: DateTime.now(),
     title: 'Total Balance',
-  );
-
-  final Divider statDivider = Divider(
-    color: Colors.grey,
-    thickness: 0.075,
-    height: 5,
   );
 
   String selectedMode = MetaText.myChallenges.toUpperCase();
@@ -73,7 +60,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Icons.settings,
               color: MetaAsset.white,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, Routes.changeProfile);
+            },
           )
         ],
       ),
@@ -86,21 +75,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
               followers: followers,
               following: following,
             ),
-            TabBar(
-              onTap: (int index) {},
-              indicator: BoxDecoration(
-                border: Border(
-                  top: BorderSide(
-                    color: Colors.grey,
-                    width: 0.5,
-                  ),
-                  bottom: BorderSide(
-                    color: Colors.grey,
-                    width: 0.5,
-                  ),
-                ),
-              ),
-              tabs: [
+            // TabBar(
+            //   onTap: (int index) {},
+            //   indicator: BoxDecoration(
+            //     border: Border(
+            //       top: BorderSide(
+            //         color: Colors.grey,
+            //         width: 0.5,
+            //       ),
+            //       bottom: BorderSide(
+            //         color: Colors.grey,
+            //         width: 0.5,
+            //       ),
+            //     ),
+            //   ),
+            //   tabs: [
+            //   ],
+            // ),
+            Row(
+              children: [
                 ToggleProfileButton(
                   text: MetaText.myChallenges.toUpperCase(),
                   isSelected:
@@ -126,15 +119,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
               visible: selectedMode == MetaText.myChallenges.toUpperCase(),
               child: Column(
                 children: [
-                  Padding(
+                  Container(
                     padding: EdgeInsets.only(
                       top: 10,
-                      left: _width * 0.05,
                       right: _width * 0.05,
                       bottom: 5,
                     ),
+                    margin: EdgeInsets.only(top: 15, bottom: 5),
+                    alignment: Alignment.centerLeft,
                     child: Text(
-                      MetaText.joinedChallenges,
+                      '${MetaText.joinedChallenges} (1)',
                       style: TextStyle(color: MetaAsset.white, fontSize: 16),
                     ),
                   ),
@@ -171,11 +165,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               text: MetaText.balance,
                               style: TextStyle(
                                 color: MetaAsset.white,
-                                fontSize: 16,
+                                fontSize: 14,
                               ),
                             ),
                             TextSpan(
-                              text: MetaText.notVisibleToOthers,
+                              text: '  ${MetaText.notVisibleToOthers}',
                               style: TextStyle(
                                 color: Colors.grey,
                                 fontSize: 14,
@@ -207,36 +201,57 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         );
                       },
                     ),
-                    statDivider,
-                    Text(
-                      MetaText.stats,
-                      style: TextStyle(
-                        color: MetaAsset.white,
-                        fontSize: 18,
+                    Container(
+                      width: _width * 0.9,
+                      decoration: BoxDecoration(
+                        border: Border(
+                          top: BorderSide(
+                            color: Colors.white70,
+                            width: 1,
+                          ),
+                          bottom: BorderSide(
+                            color: Colors.white70,
+                            width: 1,
+                          ),
+                        ),
+                      ),
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      margin: EdgeInsets.only(top: 15),
+                      child: Text(
+                        MetaText.stats.toUpperCase(),
+                        style: TextStyle(
+                          color: MetaAsset.white,
+                          fontSize: 15,
+                        ),
                       ),
                     ),
-                    statDivider,
-                    Row(
-                      children: [
-                        Text(
-                          MetaText.totalChallenges,
-                          style: TextStyle(
-                            color: Colors.white70,
-                            fontSize: 18,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10.0, bottom: 4),
+                      child: Row(
+                        children: [
+                          Text(
+                            MetaText.totalChallenges,
+                            style: TextStyle(
+                              color: Colors.white70,
+                              fontSize: 15,
+                            ),
                           ),
-                        ),
-                        Spacer(),
-                        Text(
-                          '$totalChallenges',
-                          style: TextStyle(
-                            color: MetaAsset.accentGreen,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
+                          Spacer(),
+                          Text(
+                            '$totalChallenges',
+                            style: TextStyle(
+                              color: MetaAsset.accentGreen,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                    statDivider,
+                    Divider(
+                      thickness: 1,
+                      color: Colors.white,
+                    ),
                   ],
                 ),
               ),
@@ -264,7 +279,7 @@ class ToggleProfileButton extends StatelessWidget {
     return Expanded(
       // ignore: deprecated_member_use
       child: FlatButton(
-        onPressed: () {},
+        onPressed: onPressed,
         shape: isSelected
             ? ContinuousRectangleBorder(
                 side: BorderSide(color: MetaAsset.white, width: 1),
