@@ -6,7 +6,6 @@ import 'package:cadoo/routes.dart';
 import 'package:cadoo/screens/balance/funds_screen.dart';
 import 'package:cadoo/widgets/home_challenge.dart';
 import 'package:cadoo/widgets/profile_header.dart';
-import 'package:cadoo/widgets/scaffold.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatefulWidget {

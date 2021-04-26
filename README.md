@@ -1,16 +1,10 @@
-# cadoo
+# Cadoo clone
 
-A new Flutter project.
+<a href="https://play.google.com/store/apps/details?id=io.cadoo.cadoo&hl=en&gl=US">Cadoo</a> UI clone in 24 working hours
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a UI clone of Cadoo a fitness app where user can bet and participate in challenges and get paid(In real but this is just a clone 😜) from the prize pool.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- UI clone with static data is ready
+- Backend integration will be available soon

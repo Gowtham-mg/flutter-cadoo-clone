@@ -8,7 +8,6 @@ import 'package:cadoo/screens/change_profile.dart';
 import 'package:cadoo/screens/connections.dart';
 import 'package:cadoo/screens/contact_support.dart';
 import 'package:cadoo/screens/balance/funds_screen.dart';
-import 'package:cadoo/screens/home.dart';
 import 'package:cadoo/screens/home_scaffold.dart';
 import 'package:cadoo/screens/official_challenge_rules.dart';
 import 'package:cadoo/screens/onboarding.dart';

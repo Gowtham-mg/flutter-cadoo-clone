@@ -3,7 +3,6 @@ import 'package:cadoo/meta_asset/meta_asset.dart';
 import 'package:cadoo/meta_asset/meta_styles.dart';
 import 'package:cadoo/meta_asset/meta_text.dart';
 import 'package:cadoo/routes.dart';
-import 'package:cadoo/utils/status_bar_color_changer.dart';
 import 'package:cadoo/widgets/app_rounded_button.dart';
 import 'package:cadoo/widgets/scaffold.dart';
 import 'package:flutter/gestures.dart';

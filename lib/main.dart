@@ -1,5 +1,4 @@
 import 'package:cadoo/routes.dart';
-import 'package:cadoo/screens/challenge_info.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hive/hive.dart';

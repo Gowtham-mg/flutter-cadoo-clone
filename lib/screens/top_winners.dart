@@ -1,7 +1,6 @@
 import 'package:cadoo/meta_asset/meta_asset.dart';
 import 'package:cadoo/meta_asset/meta_text.dart';
 import 'package:cadoo/models/rank.dart';
-import 'package:cadoo/widgets/scaffold.dart';
 import 'package:flutter/material.dart';
 
 class TopWinners extends StatelessWidget {

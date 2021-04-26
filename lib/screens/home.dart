@@ -3,7 +3,6 @@ import 'package:cadoo/meta_asset/meta_text.dart';
 import 'package:cadoo/models/challenge_detail.dart';
 import 'package:cadoo/models/challenge_stat.dart';
 import 'package:cadoo/utils/date_time_helper.dart';
-import 'package:cadoo/utils/status_bar_color_changer.dart';
 import 'package:cadoo/widgets/cadoo.dart';
 import 'package:cadoo/widgets/home_challenge.dart';
 import 'package:flutter/material.dart';

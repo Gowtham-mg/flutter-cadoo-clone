@@ -75,6 +75,7 @@ class _MyBalanceScreenState extends State<MyBalanceScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             ...smartOptions
+                                // ignore: deprecated_member_use
                                 .map((e) => FlatButton(
                                       color: selected == e
                                           ? MetaAsset.accentGreen
