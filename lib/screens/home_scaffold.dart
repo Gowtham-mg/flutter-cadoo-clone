@@ -19,36 +19,41 @@ class _HomeScaffoldState extends State<HomeScaffold> {
     double _width = MediaQuery.of(context).size.width;
     return StatusBarColorChanger(
       androidStatusBarColor: MetaAsset.black,
-      androidIconBrightness: Brightness.dark,
-      iosStatusBarBrightness: Brightness.dark,
+      androidIconBrightness: Brightness.light,
+      iosStatusBarBrightness: Brightness.light,
       child: Scaffold(
         backgroundColor: MetaAsset.black,
-        body: SizedBox(
-          width: _width,
-          child: Column(
-            children: [
-              Visibility(
-                visible: index == 2,
-                child: HomeScreen(),
-              ),
-              Visibility(
-                visible: index == 1,
-                child: MyBalanceScreen(),
-              ),
-              Visibility(
-                visible: index == 4,
-                child: ProfileScreen(),
-              ),
-              Visibility(
-                visible: index == 3,
-                child: TopWinners(),
-              ),
-              Visibility(
-                visible: index == 0,
-                child: ConnectionsScreen(),
-              ),
-            ],
-          ),
+        body: LayoutBuilder(
+          builder: (context, constraints) {
+            return SizedBox(
+            width: _width,
+            height: constraints.maxHeight,
+            child: Stack(
+              children: [
+                Visibility(
+                  visible: index == 2,
+                  child: HomeScreen(),
+                ),
+                Visibility(
+                  visible: index == 1,
+                  child: MyBalanceScreen(),
+                ),
+                Visibility(
+                  visible: index == 4,
+                  child: ProfileScreen(),
+                ),
+                Visibility(
+                  visible: index == 3,
+                  child: TopWinners(),
+                ),
+                Visibility(
+                  visible: index == 0,
+                  child: ConnectionsScreen(),
+                ),
+              ],
+            ),
+          );
+          }
         ),
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: MetaAsset.black,
